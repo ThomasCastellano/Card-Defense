@@ -1,35 +1,34 @@
-public class Ennemy
+using UnityEngine;
+public class Ennemy : Tile
 {
-    private int hp;         // Heath
-    private int speed;      // Temps entre deux déplacements
-    private int movement;   // Distance de déplacement max
+    public int hp;         // Heath
+    public int movement;   // Distance de déplacement max
+    public float _fSpeed;  // Temps entre deux déplacements
 
-    private int RowPos;     // Position dans le tableau
-    private int ColPos;
+    private float MovementTimer;
 
-    private int 
-
-    public Ennemy(int iHP, int iSpeed, int iMovement)
+    // ----------------------------------------------
+    // Constructor
+    // ----------------------------------------------
+    public Ennemy(int iRow, int iCol, int iHP, int iSpeed, int iMovement)
     {
+        _nRowPos = iRow;
+        _nColPos = iCol;
         hp = iHP;
-        speed = iSpeed;
+        _fSpeed = iSpeed;
         movement = iMovement;
     }
 
-    // Getters & Setters
-    public int GetHP() { return hp; }
-    public void SetHP(int iValue) 
-    { 
-        hp = iValue; 
-    }
-    public int GetSpeed() { return speed; }
-    public void SetSpeed(int iValue)
+    // ----------------------------------------------
+    // MoveDown
+    // ----------------------------------------------
+    public void MoveDown()
     {
-        speed = iValue;
-    }
-    public int GetMovement() { return movement; }
-    public void SetMovement(int iValue)
-    {
-        movement = iValue;
+        if (MovementTimer - Time.time > _fSpeed)
+        {
+            RowPos++;
+            MovementTimer = Time.time;
+            BoardModel.needRefresh = true;
+        }
     }
 }

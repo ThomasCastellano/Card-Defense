@@ -1,4 +1,4 @@
-public class Obstacle
+public class Obstacle  : Tile
 {
     bool isOpaque;
     int damage;
