@@ -57,6 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\StateMachine.cs" />
+    <Compile Include="Assets\BoardModel.cs" />
+    <Compile Include="Assets\Tile.cs" />
+    <Compile Include="Assets\Ennemy.cs" />
+    <Compile Include="Assets\Obstacle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
