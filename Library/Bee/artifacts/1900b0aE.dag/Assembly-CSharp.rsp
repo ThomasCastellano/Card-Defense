@@ -357,6 +357,7 @@
 "Assets/Obstacle.cs"
 "Assets/Scripts/StateMachine.cs"
 "Assets/Tile.cs"
+"Assets/Trap.cs"
 -langversion:9.0
 
 /deterministic

@@ -1,8 +1,8 @@
 using UnityEngine;
 public class Ennemy : Tile
 {
-    public int hp;         // Heath
-    public int movement;   // Distance de déplacement max
+    public int _nHp;         // Heath
+    public int _nMovement;   // Distance de déplacement max
     public float _fSpeed;  // Temps entre deux déplacements
 
     private float MovementTimer;
@@ -10,13 +10,11 @@ public class Ennemy : Tile
     // ----------------------------------------------
     // Constructor
     // ----------------------------------------------
-    public Ennemy(int iRow, int iCol, int iHP, int iSpeed, int iMovement)
+    public Ennemy(int iRow, int iCol , int iHP, int iSpeed, int iMovement) : base(iRow, iCol)
     {
-        _nRowPos = iRow;
-        _nColPos = iCol;
-        hp = iHP;
+        _nHp = iHP;
         _fSpeed = iSpeed;
-        movement = iMovement;
+        _nMovement = iMovement;
     }
 
     // ----------------------------------------------
@@ -26,9 +24,9 @@ public class Ennemy : Tile
     {
         if (MovementTimer - Time.time > _fSpeed)
         {
-            RowPos++;
+            _nRowPos++;
             MovementTimer = Time.time;
-            BoardModel.needRefresh = true;
+            BoardModel._NeedRefresh = true;
         }
     }
 }

@@ -1,6 +1,16 @@
-public class Obstacle  : Tile
+public enum OBSTACLE_TYPE
 {
-    bool isOpaque;
-    int damage;
+    TRAP,
+    LEAVES,
+    FOG,
+    SNOW
+}
 
+public class Obstacle : Tile
+{
+    // Constructeur protégé
+    protected Obstacle(int iRow, int iCol) : base(iRow, iCol)
+    {
+
+    }
 }

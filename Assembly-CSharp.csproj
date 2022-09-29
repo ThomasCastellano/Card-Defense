@@ -61,6 +61,8 @@
     <Compile Include="Assets\Obstacle.cs" />
     <Compile Include="Assets\Ennemy.cs" />
     <Compile Include="Assets\Tile.cs" />
+    <Compile Include="Assets\Trap.cs" />
+    <Compile Include="Assets\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
