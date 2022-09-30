@@ -56,13 +56,16 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Logic\GameManager.cs" />
     <Compile Include="Assets\Scripts\StateMachine.cs" />
-    <Compile Include="Assets\BoardModel.cs" />
-    <Compile Include="Assets\Obstacle.cs" />
-    <Compile Include="Assets\Ennemy.cs" />
-    <Compile Include="Assets\Tile.cs" />
-    <Compile Include="Assets\Trap.cs" />
-    <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Logic\Card.cs" />
+    <Compile Include="Assets\Scripts\Logic\Trap.cs" />
+    <Compile Include="Assets\Scripts\Logic\TrapCard.cs" />
+    <Compile Include="Assets\Scripts\Logic\BoardModel.cs" />
+    <Compile Include="Assets\Scripts\Logic\Obstacle.cs" />
+    <Compile Include="Assets\Scripts\Logic\Ennemy.cs" />
+    <Compile Include="Assets\Scripts\Logic\Tile.cs" />
+    <Compile Include="Assets\Scripts\Logic\BearTrapCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

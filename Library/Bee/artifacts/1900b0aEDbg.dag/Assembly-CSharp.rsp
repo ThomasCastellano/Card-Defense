@@ -352,13 +352,16 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
+"Assets/BearTrapCard.cs"
 "Assets/BoardModel.cs"
+"Assets/Card.cs"
 "Assets/Ennemy.cs"
 "Assets/GameManager.cs"
 "Assets/Obstacle.cs"
 "Assets/Scripts/StateMachine.cs"
 "Assets/Tile.cs"
 "Assets/Trap.cs"
+"Assets/TrapCard.cs"
 -langversion:9.0
 
 /deterministic
