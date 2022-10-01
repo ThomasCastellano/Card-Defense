@@ -20,7 +20,6 @@ public class Ennemy : Tile
     // ----------------------------------------------
     // MoveDown
     // ----------------------------------------------
-
     // Déplace l'ennemi vers le bas uniquement du cote de sa donnée
     // Le déplacement dans le tableau est géré dans le BoardModel
     // @return True : the ennemy has been moved

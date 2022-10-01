@@ -5,6 +5,7 @@ using UnityEngine;
 public enum STATE{
     MENU,
     PLAY,
+    PAUSE,
     SCORE
 }
 
