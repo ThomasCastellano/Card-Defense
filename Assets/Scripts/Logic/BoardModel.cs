@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -6,7 +7,6 @@ public class BoardModel
 {
     const int SIZE_ROW = 8;
     const int SIZE_COL = 4;
-    const int SIZE_HAND = 4;
     const int MAX_NUMBER_OF_ENNEMIES = 12;
     const int TILE_MAX_OVERLAP = 1; // TODO : Superposition de Tiles
 
@@ -14,9 +14,10 @@ public class BoardModel
     // Tableau 2D contenant une liste des Tiles à chaque emplacement
     // TODO : Les Tiles peuvent se superposés (ex: un piège et un ennemi)
     public static Tile[,] _Board = new Tile[SIZE_ROW, SIZE_COL];    
-    public static ArrayList _lEnnemies = new ArrayList();          // Liste des references sur les ennemis en jeu
-    public static ArrayList _lPlayerHand = new ArrayList();        // Main du joueur
+    public static List<Ennemy> _lEnnemies = new List<Ennemy>();          // Liste des references sur les ennemis en jeu
+    public static List<Trap> _lTraps = new List<Trap>();          // Liste des references sur les pièges en jeu
     public static bool _NeedRefresh = false;    // Pour refresh la visu
+    public static bool needDestroy = false;
     public static float _CycleTime = 3.0f;      // Temps entre l'ajout de deux ennemis
 
     private float _TimerStart = 0.0f;
@@ -41,14 +42,6 @@ public class BoardModel
             {
                 _Board[i, j] = new Tile(i, j);
             }
-        }
-    }
-
-    public void BuildHand()
-    {
-        for (int i = 0; i < SIZE_HAND; i++)
-        {
-            //_lPlayerHand.Add(new TrapCard(i, i));
         }
     }
 
@@ -82,6 +75,38 @@ public class BoardModel
             str.Append("\n");
         }
         Debug.Log(str.ToString());
+        _NeedRefresh = false;
+    }
+
+    // ----------------------------------------------
+    // DeleteFlaggedTiles
+    // ----------------------------------------------
+    // Supprime les Tiles marquées avec le flag _ToDestroyFlag
+    public void DestroyFlaggedTiles()
+    {
+        foreach (Ennemy ennemy in _lEnnemies)
+        {
+            if (ennemy._ToDestroyFlag)
+            {
+                int RowPos = ennemy._nRowPos;
+                int ColPos = ennemy._nColPos;
+                _Board[RowPos, ColPos] = new Tile(RowPos, ColPos);
+            }
+        }
+        _lEnnemies.RemoveAll(x => x._ToDestroyFlag);
+
+        foreach (Trap trap in _lTraps)
+        {
+            if (trap._ToDestroyFlag)
+            {
+                int RowPos = trap._nRowPos;
+                int ColPos = trap._nColPos;
+                _Board[RowPos, ColPos] = new Tile(RowPos, ColPos);
+            }
+        }
+        _lTraps.RemoveAll(x => x._ToDestroyFlag);
+
+        needDestroy = false;
     }
 
     // ----------------------------------------------
@@ -102,9 +127,18 @@ public class BoardModel
         _TimerStart = Time.time;
     }
 
-    public void AddTrapFromCard(TrapCard Card)
+    // ----------------------------------------------
+    // AddTrapFromCard
+    // ----------------------------------------------
+    // Fait le lien entre une carte piège et l'objet piège
+    // lorsque la carte est jouée
+    public void AddTrapFromCard(TrapCard iTrapCard, int iRow, int iCol)
     {
-        //if (Card) ;
+        // Crée un piège du même type que la carte jouée
+        Trap trap = new Trap(iRow, iCol, iTrapCard.damage, iTrapCard.trapType);
+        _Board[iRow, iCol] = trap;
+        _lTraps.Add(trap);
+        _NeedRefresh = true;
     }
 
     // ----------------------------------------------

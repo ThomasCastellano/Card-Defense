@@ -2,9 +2,14 @@ using UnityEngine;
 
 public abstract class Card
 {
-    public string _sName;
-    public int _Type;
-    public int _nDamage;
+    public string name;
+    public CardType type;
+
+    protected Card(string iName, CardType iType)
+    {
+        name = iName;
+        type = iType;
+    }
 
     public abstract void OnPlayed(int iRow, int iCol);
 
