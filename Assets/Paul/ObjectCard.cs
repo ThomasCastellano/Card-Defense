@@ -9,24 +9,36 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
     public GameObject object_Game;
     public Canvas canvas;
     private GameObject objectDragInstance;
+    private GameManager gameManager;
 
-    public void OnPointerDown(PointerEventData eventData)
+    private void Start()
     {
-        objectDragInstance = Instantiate (object_Drag, canvas.transform);
-        objectDragInstance.transform.position = Input.mousePosition;
-        GameManager.instance.draggingObject = objectDragInstance;
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        GameManager.instance.draggingObject = null;
-       Destroy(objectDragInstance);
+        gameManager = GameManager.instance;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         objectDragInstance.transform.position = Input.mousePosition;
     }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        objectDragInstance = Instantiate (object_Drag, canvas.transform);
+        objectDragInstance.transform.position = Input.mousePosition;
+        objectDragInstance.GetComponent<ObjectDragging>().card = this;
+        gameManager.draggingObject = objectDragInstance;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        gameManager.PlaceObject();
+        gameManager.draggingObject = null;
+        Destroy(objectDragInstance);
+        
+
+    }
+
+    
  
 }
 
