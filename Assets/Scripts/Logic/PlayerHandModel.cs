@@ -66,4 +66,13 @@ public class PlayerHandModel
 
         return card;
     }
+
+    // ----------------------------------------------
+    // OnCardPlayed
+    // ----------------------------------------------
+    // When a card is played from UI this method is called
+    public void OnCardPlayed(Card card)
+    {
+
+    }
 }
