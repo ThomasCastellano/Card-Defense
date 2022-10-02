@@ -8,10 +8,16 @@ public class Monster
 {
     public int spawnTime;
     public MonsterType monsterType;
+    public int Spawner;
+    public bool RandomSpawn;
+    public bool isSpawned;
+
+
 }
 
 public enum MonsterType
 {
     Monster1,
-    Monster2
+    Monster2,
+    Monster3
 }
