@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerHandModel
 {
     const int SIZE_HAND = 4;
+    const int SIZE_NEXT_CARDS = 2;
 
-    public static List<Card> _lPlayerHand = new List<Card>();        // Main du joueur
+    public static List<Card> _lPlayerHand = new List<Card>(SIZE_HAND);        // Main du joueur
+    public static List<Card> _lNextCards = new List<Card>(SIZE_NEXT_CARDS);       // Deux prochaines cartes
 
     // ----------------------------------------------
     // Constructor
@@ -23,7 +25,7 @@ public class PlayerHandModel
     {
         for (int i = 0; i < SIZE_HAND; i++)
         {
-            _lPlayerHand.Add(CreateRandomCard());
+            _lPlayerHand[i] = CreateRandomCard();
         }
     }
 
@@ -67,12 +69,20 @@ public class PlayerHandModel
         return card;
     }
 
+    public void AddNextCardToHand(int index)
+    {
+        _lPlayerHand[index] = _lNextCards[0];
+        _lNextCards[0] = _lNextCards[1];
+        _lNextCards[1] = CreateRandomCard();
+    }
+
     // ----------------------------------------------
     // OnCardPlayed
     // ----------------------------------------------
     // When a card is played from UI this method is called
-    public void OnCardPlayed(Card card)
+    public void OnCardPlayed(Card card, int index)
     {
 
     }
+
 }

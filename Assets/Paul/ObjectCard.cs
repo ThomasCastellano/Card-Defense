@@ -8,6 +8,7 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
     public GameObject object_Drag;
     public GameObject object_Game;
     public Canvas canvas;
+
     private GameObject objectDragInstance;
     private GameManager gameManager;
 
@@ -31,10 +32,14 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        // Place l'objet sur le board
         gameManager.PlaceObject();
+
+        // Détruit l'objet de drag n drop
         gameManager.draggingObject = null;
         Destroy(objectDragInstance);
         
+
 
     }
 

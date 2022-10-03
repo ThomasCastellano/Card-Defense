@@ -148,6 +148,12 @@ public class BoardModel
     {
         foreach (Ennemy ennemy in _lEnnemies)
         {
+            if (ennemy == null)
+            {
+                Debug.LogError("Null Ennemy");
+                return;
+            }
+
             int OldEnnemyRowPos = ennemy._nRowPos;
             int OldEnnemyColPos = ennemy._nColPos;
 
