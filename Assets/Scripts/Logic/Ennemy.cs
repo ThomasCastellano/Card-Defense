@@ -31,23 +31,33 @@ public class Ennemy : Tile
         if (_MovementTimer > Speed)
         {
             // Porté du mouvement random
-            int nMove = Random.Range(0, Movement+1);
-            while (nMove + Row > 7)
+            int Move = Random.Range(0, Movement+1);
+
+            // Le monstre ne peut pas attaquer le joueur avec un saut de plus de 1
+            if (Move > 0 && Row == BoardModel.SIZE_ROW - 1)
             {
-                nMove--;
+                Move = 1;
+            }
+            else
+            {
+                while (Move + Row > 7)
+                {
+                    Move--;
+                }
             }
 
-            // Si pas d'ennemi sur la case on déplace
-            if (nMove > 0 && Row < 7)
+            if (Move > 0 && Row < 7)
             {
-                if (BoardModel._Board[Row + nMove, Col].GetType().Name != "Ennemy")
+                // Si pas d'ennemi sur la case on déplace
+                if (BoardModel._Board[Row + Move, Col].GetType().Name != "Ennemy")
                 {
-                    Row += nMove;
-                    _MovementTimer = 0;
+                    Row += Move;
                     BoardModel._NeedRefresh = true;
                     return true;
                 }
             }
+
+            _MovementTimer = 0;
         }
 
         if (Row >= BoardModel.SIZE_ROW)
