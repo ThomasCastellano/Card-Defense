@@ -2,7 +2,7 @@ public class Trap : Tile
 {
     public TrapType trapType;
 
-    private int _nDamage = 0;
+    private int Damage = 0;
     // TODO : ajouter une zone d'effet avec un tableau 2D
 
     // ----------------------------------------------
@@ -10,7 +10,7 @@ public class Trap : Tile
     // ----------------------------------------------
     public Trap(int iRow, int iCol, int iDamage, TrapType iTrapType, bool iVisible = true) : base(iRow, iCol, iVisible)
     {
-        _nDamage = iDamage;
+        Damage = iDamage;
         trapType = iTrapType;
     }
 
@@ -19,12 +19,12 @@ public class Trap : Tile
     // ----------------------------------------------
     public void Activate(Ennemy iEnnemy)
     {
-        iEnnemy._nHp -= _nDamage;
-        if (iEnnemy._nHp <= 0)
+        iEnnemy.Hp -= Damage;
+        if (iEnnemy.Hp <= 0)
         {
-            iEnnemy._ToDestroyFlag = true;
+            iEnnemy.ToDestroyFlag = true;
         }
-        this._ToDestroyFlag = true;
+        this.ToDestroyFlag = true;
         BoardModel.needDestroy = true;
     }
 }

@@ -19,7 +19,7 @@ public class BoardModel
     public static List<Trap> _lTraps = new List<Trap>();          // Liste des references sur les pièges en jeu
     public static bool _NeedRefresh = false;    // Pour refresh la visu
     public static bool needDestroy = false;
-    public static float _CycleTime = 3.0f;      // Temps entre l'ajout de deux ennemis
+    //public static float _CycleTime = 3.0f;      // Temps entre l'ajout de deux ennemis
 
     private float _TimerStart = 0.0f;
 
@@ -87,25 +87,25 @@ public class BoardModel
     {
         foreach (Ennemy ennemy in _lEnnemies)
         {
-            if (ennemy._ToDestroyFlag)
+            if (ennemy.ToDestroyFlag)
             {
-                int RowPos = ennemy._nRowPos;
-                int ColPos = ennemy._nColPos;
+                int RowPos = ennemy.Row;
+                int ColPos = ennemy.Col;
                 _Board[RowPos, ColPos] = new Tile(RowPos, ColPos);
             }
         }
-        _lEnnemies.RemoveAll(x => x._ToDestroyFlag);
+        _lEnnemies.RemoveAll(x => x.ToDestroyFlag);
 
         foreach (Trap trap in _lTraps)
         {
-            if (trap._ToDestroyFlag)
+            if (trap.ToDestroyFlag)
             {
-                int RowPos = trap._nRowPos;
-                int ColPos = trap._nColPos;
+                int RowPos = trap.Row;
+                int ColPos = trap.Col;
                 _Board[RowPos, ColPos] = new Tile(RowPos, ColPos);
             }
         }
-        _lTraps.RemoveAll(x => x._ToDestroyFlag);
+        _lTraps.RemoveAll(x => x.ToDestroyFlag);
 
         needDestroy = false;
     }
@@ -119,7 +119,7 @@ public class BoardModel
         // Si la case est prise par un ennemi, on ne rajoute pas d'ennemis dessus
         if (_Board[0, nCol].GetType().Name == "Ennemy") return;
 
-        Ennemy newEnnemy = new Ennemy(0, nCol, 1, 2, 1, EnnemyType.BEAR);
+        Ennemy newEnnemy = new Ennemy(0, nCol, 1, 3, 1, EnnemyType.BEAR);
         _Board[0, nCol] = newEnnemy;
         _lEnnemies.Add(newEnnemy);
         _NeedRefresh = true;
@@ -153,14 +153,14 @@ public class BoardModel
                 return;
             }
 
-            int OldEnnemyRowPos = ennemy._nRowPos;
-            int OldEnnemyColPos = ennemy._nColPos;
+            int OldEnnemyRowPos = ennemy.Row;
+            int OldEnnemyColPos = ennemy.Col;
 
             // Déplace l'ennemi et vérifie qu'il n'a pas été bloqué par un autre ennemi
             if (ennemy.MoveDown() == true)
             {
-                int NewEnnemyRowPos = ennemy._nRowPos;
-                int NewEnnemyColPos = ennemy._nColPos;
+                int NewEnnemyRowPos = ennemy.Row;
+                int NewEnnemyColPos = ennemy.Col;
 
                 // Si l'ennemi vient de se placer sur une Tile piege, il l'active et la détruit
                 string sOldTileType = _Board[NewEnnemyRowPos, NewEnnemyColPos].GetType().Name;
@@ -168,7 +168,7 @@ public class BoardModel
                 {
                     Trap TrapTile = (Trap)_Board[NewEnnemyRowPos, NewEnnemyColPos];
                     TrapTile.Activate(ennemy);
-                    TrapTile._ToDestroyFlag = true;
+                    TrapTile.ToDestroyFlag = true;
                     _Board[OldEnnemyRowPos, OldEnnemyColPos] = new Tile(OldEnnemyRowPos, OldEnnemyColPos);
                 }
                 else

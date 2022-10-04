@@ -10,13 +10,13 @@ public class GameManager : MonoBehaviour
     public GameObject playGrid;
     public TileContainer tileContainerPrefab;
 
-    public static float _CycleTime = 3.0f;      // Temps entre l'ajout de deux ennemis
+    public static float _SpawnDelay = 5.0f;      // Temps entre l'ajout de deux ennemis
 
     private BoardModel _boardModel;
     private PlayerHandModel _playerHandModel;
     private List<TileContainer> _tileContainers = new List<TileContainer>();
 
-    private float _SpawnTimer = 0;
+    private float _SpawnTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,14 +30,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _boardModel.MoveEnnemies();
+
         if (BoardModel.needDestroy)
         {
             _boardModel.DestroyFlaggedTiles();
         }
 
-        _boardModel.MoveEnnemies();
-
-        if (_SpawnTimer > _CycleTime && BoardModel._lEnnemies.Count < MAX_NUMBER_OF_ENNEMIES)
+        if (_SpawnTimer > _SpawnDelay && BoardModel._lEnnemies.Count < MAX_NUMBER_OF_ENNEMIES)
         {
             _boardModel.AddEnnemy();
             _SpawnTimer = 0;

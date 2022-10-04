@@ -1,22 +1,22 @@
 using UnityEngine;
 public class Ennemy : Tile
 {
-    public int _nHp;         // Heath
-    public int _nMovement;   // Distance de déplacement max
-    public float _fSpeed;    // Temps entre deux déplacements
+    public int Hp;         // Heath
+    public int Movement;   // Distance de déplacement max
+    public float Speed;    // Temps entre deux déplacements
     public EnnemyType type;
 
-    private float MovementTimer = 2.0f;
+    private float _MovementTimer = 0f;
 
     // ----------------------------------------------
     // Constructor
     // ----------------------------------------------
-    public Ennemy(int iRow, int iCol , int iHP, int iSpeed, int iMovement, EnnemyType type) : base(iRow, iCol)
+    public Ennemy(int iRow, int iCol , int iHP, int iSpeed, int iMovement, EnnemyType iType) : base(iRow, iCol)
     {
-        _nHp = iHP;
-        _fSpeed = iSpeed;
-        _nMovement = iMovement;
-        this.type = type;
+        Hp = iHP;
+        Speed = iSpeed;
+        Movement = iMovement;
+        type = iType;
     }
 
     // ----------------------------------------------
@@ -28,27 +28,36 @@ public class Ennemy : Tile
     // @return False : the ennemy was unable to move
     public bool MoveDown()
     {
-        if (Time.time - MovementTimer > _fSpeed)
+        if (_MovementTimer > Speed)
         {
             // Porté du mouvement random
-            int nMove = Random.Range(0, _nMovement+1);
-            while (nMove + _nRowPos > 7)
+            int nMove = Random.Range(0, Movement+1);
+            while (nMove + Row > 7)
             {
                 nMove--;
             }
 
-            // Si pas d'ennemi sur la case
-            if (nMove > 0 && _nRowPos < 7)
+            // Si pas d'ennemi sur la case on déplace
+            if (nMove > 0 && Row < 7)
             {
-                if (BoardModel._Board[_nRowPos + nMove, _nColPos].GetType().Name != "Ennemy")
+                if (BoardModel._Board[Row + nMove, Col].GetType().Name != "Ennemy")
                 {
-                    _nRowPos += nMove;
-                    MovementTimer = Time.time;
+                    Row += nMove;
+                    _MovementTimer = 0;
                     BoardModel._NeedRefresh = true;
                     return true;
                 }
             }
         }
+
+        if (Row >= BoardModel.SIZE_ROW)
+        {
+            // TODO: Bloquer une carte pour le joueur
+
+            ToDestroyFlag = true;
+        }
+
+        _MovementTimer += Time.deltaTime;
         return false;
     }
 }
