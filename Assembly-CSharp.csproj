@@ -67,22 +67,22 @@
     <Compile Include="Assets\Scripts\Logic\TrapCard.cs" />
     <Compile Include="Assets\Scripts\Visu\TrapCardObject.cs" />
     <Compile Include="Assets\Scripts\Logic\HuntingRifleCard.cs" />
-    <Compile Include="Assets\Paul\Monster.cs" />
     <Compile Include="Assets\Scripts\Logic\BoardModel.cs" />
     <Compile Include="Assets\Scripts\Logic\Obstacle.cs" />
     <Compile Include="Assets\Scripts\Visu\TileContainer.cs" />
-    <Compile Include="Assets\Paul\GameVisuManager.cs" />
-    <Compile Include="Assets\Paul\ObjectCard.cs" />
     <Compile Include="Assets\Scripts\Logic\CardTypeEnum.cs" />
     <Compile Include="Assets\Scripts\Logic\Ennemy.cs" />
     <Compile Include="Assets\Scripts\Logic\Tile.cs" />
     <Compile Include="Assets\Scripts\Logic\PlayerHandModel.cs" />
     <Compile Include="Assets\Scripts\Logic\BearTrapCard.cs" />
-    <Compile Include="Assets\Paul\ObjectDragging.cs" />
-    <Compile Include="Assets\Paul\MonsterSpawner.cs" />
     <Compile Include="Assets\Scripts\Logic\GameManager.cs" />
     <Compile Include="Assets\Scripts\Logic\EnnemyTypeEnum.cs" />
-    <Compile Include="Assets\Paul\VisuGameManager.cs" />
+    <Compile Include="Assets\Paul\Script\ObjectCard.cs" />
+    <Compile Include="Assets\Paul\Script\GameVisuManager.cs" />
+    <Compile Include="Assets\Paul\Script\Monster.cs" />
+    <Compile Include="Assets\Paul\Script\MonsterSpawner.cs" />
+    <Compile Include="Assets\Paul\Script\VisuGameManager.cs" />
+    <Compile Include="Assets\Paul\Script\ObjectDragging.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
