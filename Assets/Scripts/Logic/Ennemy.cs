@@ -40,31 +40,32 @@ public class Ennemy : Tile
             }
             else
             {
-                while (Move + Row > 7)
+                while (Move + Row > BoardModel.SIZE_ROW - 1)
                 {
                     Move--;
                 }
             }
 
-            if (Move > 0 && Row < 7)
+            if (Move > 0 && Row < BoardModel.SIZE_ROW-1)
             {
                 // Si pas d'ennemi sur la case on déplace
                 if (BoardModel._Board[Row + Move, Col].GetType().Name != "Ennemy")
                 {
                     Row += Move;
                     BoardModel._NeedRefresh = true;
+                    _MovementTimer = 0;
                     return true;
                 }
             }
 
-            _MovementTimer = 0;
         }
 
-        if (Row >= BoardModel.SIZE_ROW)
+        if (Row >= BoardModel.SIZE_ROW-1)
         {
             // TODO: Bloquer une carte pour le joueur
 
             ToDestroyFlag = true;
+            BoardModel.needDestroy = true;
         }
 
         _MovementTimer += Time.deltaTime;
