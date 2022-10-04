@@ -59,19 +59,19 @@
     <Compile Include="Assets\Scripts\Logic\LeavesTrapCard.cs" />
     <Compile Include="Assets\Scripts\Logic\TrapTypeEnum.cs" />
     <Compile Include="Assets\Scripts\Logic\WeaponCard.cs" />
-    <Compile Include="Assets\Scripts\Logic\GameLogicManager.cs" />
     <Compile Include="Assets\Scripts\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Logic\Card.cs" />
     <Compile Include="Assets\Scripts\Logic\Trap.cs" />
     <Compile Include="Assets\Scripts\Logic\Knife.cs" />
     <Compile Include="Assets\Scripts\Logic\WeaponTypeEnum.cs" />
     <Compile Include="Assets\Scripts\Logic\TrapCard.cs" />
+    <Compile Include="Assets\Scripts\Visu\TrapCardObject.cs" />
     <Compile Include="Assets\Scripts\Logic\HuntingRifleCard.cs" />
     <Compile Include="Assets\Paul\Monster.cs" />
     <Compile Include="Assets\Scripts\Logic\BoardModel.cs" />
     <Compile Include="Assets\Scripts\Logic\Obstacle.cs" />
-    <Compile Include="Assets\Paul\ObjectContainer.cs" />
-    <Compile Include="Assets\Paul\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Visu\TileContainer.cs" />
+    <Compile Include="Assets\Paul\VisuGameManager.cs" />
     <Compile Include="Assets\Paul\ObjectCard.cs" />
     <Compile Include="Assets\Scripts\Logic\CardTypeEnum.cs" />
     <Compile Include="Assets\Scripts\Logic\Ennemy.cs" />
@@ -80,7 +80,8 @@
     <Compile Include="Assets\Scripts\Logic\BearTrapCard.cs" />
     <Compile Include="Assets\Paul\ObjectDragging.cs" />
     <Compile Include="Assets\Paul\MonsterSpawner.cs" />
-    <Compile Include="Assets\Scripts\Visu\TrapCardObject.cs" />
+    <Compile Include="Assets\Scripts\Logic\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Logic\EnnemyTypeEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

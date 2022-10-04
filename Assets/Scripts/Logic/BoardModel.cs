@@ -5,14 +5,15 @@ using UnityEngine.Rendering;
 
 public class BoardModel
 {
-    const int SIZE_ROW = 8;
-    const int SIZE_COL = 4;
-    const int MAX_NUMBER_OF_ENNEMIES = 12;
-    const int TILE_MAX_OVERLAP = 1; // TODO : Superposition de Tiles
+    public const int SIZE_ROW = 8;
+    public const int SIZE_COL = 4;
+    //public const int MAX_NUMBER_OF_ENNEMIES = 12;
+    //public const int TILE_MAX_OVERLAP = 1; // TODO : Superposition de Tiles
 
     // Plateau de jeu
     // Tableau 2D contenant une liste des Tiles à chaque emplacement
     // TODO : Les Tiles peuvent se superposés (ex: un piège et un ennemi)
+    public static BoardModel instance;
     public static Tile[,] _Board = new Tile[SIZE_ROW, SIZE_COL];    
     public static List<Ennemy> _lEnnemies = new List<Ennemy>();          // Liste des references sur les ennemis en jeu
     public static List<Trap> _lTraps = new List<Trap>();          // Liste des references sur les pièges en jeu
@@ -22,13 +23,13 @@ public class BoardModel
 
     private float _TimerStart = 0.0f;
 
-
     // ----------------------------------------------
     // Constructor
     // ----------------------------------------------
     public BoardModel()
     {
         BuildBoard();
+        instance = this;
     }
 
     // ----------------------------------------------
@@ -114,13 +115,11 @@ public class BoardModel
     // ----------------------------------------------
     public void AddEnnemy()
     {
-        if (Time.time - _TimerStart < _CycleTime  || _lEnnemies.Count >= MAX_NUMBER_OF_ENNEMIES) return;
-
         int nCol = Random.Range(0,4);
         // Si la case est prise par un ennemi, on ne rajoute pas d'ennemis dessus
         if (_Board[0, nCol].GetType().Name == "Ennemy") return;
 
-        Ennemy newEnnemy = new Ennemy(0, nCol, 1, 2, 1);
+        Ennemy newEnnemy = new Ennemy(0, nCol, 1, 2, 1, EnnemyType.BEAR);
         _Board[0, nCol] = newEnnemy;
         _lEnnemies.Add(newEnnemy);
         _NeedRefresh = true;
@@ -185,5 +184,9 @@ public class BoardModel
         }
     }
     
+    public Tile GetTile(int Row, int Col)
+    {
+        return _Board[Row, Col];
+    }
 
 }

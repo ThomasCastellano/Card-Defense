@@ -4,17 +4,19 @@ public class Ennemy : Tile
     public int _nHp;         // Heath
     public int _nMovement;   // Distance de déplacement max
     public float _fSpeed;    // Temps entre deux déplacements
+    public EnnemyType type;
 
     private float MovementTimer = 2.0f;
 
     // ----------------------------------------------
     // Constructor
     // ----------------------------------------------
-    public Ennemy(int iRow, int iCol , int iHP, int iSpeed, int iMovement) : base(iRow, iCol)
+    public Ennemy(int iRow, int iCol , int iHP, int iSpeed, int iMovement, EnnemyType type) : base(iRow, iCol)
     {
         _nHp = iHP;
         _fSpeed = iSpeed;
         _nMovement = iMovement;
+        this.type = type;
     }
 
     // ----------------------------------------------
