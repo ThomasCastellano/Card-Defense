@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
     [ContextMenu("PlayTrapCard")]
     void PlayTrapCard()
     {
-        BearTrapCard card = new BearTrapCard();
-        _boardModel.AddTrapFromCard(card, Random.Range(0, 7), Random.Range(0, 3));
+        BearTrap trap = new BearTrap();
+        _boardModel.AddTrapFromCard(trap, Random.Range(0, 7), Random.Range(0, 3));
     }
 
     [ContextMenu("Refresh")]

@@ -45,7 +45,7 @@ public class TileContainer : MonoBehaviour
                     }
             }
         }
-        else if (tile is Trap trap)
+        else if (tile is TrapTile trap)
         {
 
         }

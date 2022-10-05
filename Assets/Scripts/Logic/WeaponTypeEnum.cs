@@ -1,5 +1,5 @@
 public enum WeaponType
 {
-    HUNTING_RIFLE,
-    KNIFE
+    SPEAR,
+    TORCH
 }

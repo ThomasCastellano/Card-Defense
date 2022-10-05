@@ -462,7 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -538,13 +538,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2a15a958e721af54d8ccd25ea34ffd3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59dea249b2359eb4a9a73e17788b92dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -662,7 +662,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -727,8 +727,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 240, y: 243}
-  m_Spacing: {x: 0, y: 0}
+  m_CellSize: {x: 210, y: 256}
+  m_Spacing: {x: 40, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 4
 --- !u!114 &939628502
@@ -788,7 +788,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -804,7 +804,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91baec4ae8e25804f91a85f6ea127050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beartrapCardPrefab: {fileID: 3697050912036298457, guid: 6a7d59635cf971e40b64fead8f2251ab, type: 3}
+  bearTrapCardPrefab: {fileID: 1125186883433440172, guid: 5080377e8d5ecff43aaae82fb85e9648, type: 3}
+  netTrapCardPrefab: {fileID: 1125186883433440172, guid: 45f844fe9134ab541b35583d5a9eb6e4, type: 3}
+  spearCardPrefab: {fileID: 1125186883433440172, guid: e0cece34c32e29649b3c7793749072e2, type: 3}
+  torchCardPrefab: {fileID: 1125186883433440172, guid: 302b042a21c50c94ea03abd7617d9397, type: 3}
+  mercenaryCardPrefab: {fileID: 1125186883433440172, guid: 015a6673a00706841b15d9f67429a3c5, type: 3}
+  rexCardPrefab: {fileID: 1125186883433440172, guid: aa73be137dcb400448ea4238aea3e5e4, type: 3}
+  snowmanCardPrefab: {fileID: 1125186883433440172, guid: ae0eab7767f76ed45b0dab4f6809e198, type: 3}
+  scarecrowCardPrefab: {fileID: 1125186883433440172, guid: 13a93d2cd6a67564dbfac4b57ff6a574, type: 3}
+  restoreCardPrefab: {fileID: 1125186883433440172, guid: b057b4949ac89984f9066cd64c1598c2, type: 3}
 --- !u!1 &1037427711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,7 +1128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

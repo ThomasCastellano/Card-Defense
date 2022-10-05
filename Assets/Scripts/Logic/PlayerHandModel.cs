@@ -6,8 +6,8 @@ public class PlayerHandModel
 {
     public static PlayerHandModel instance;
 
-    public List<Card> lPlayerHand = new List<Card>(new Card[SIZE_HAND]);        // Main du joueur
-    public List<Card> lNextCards = new List<Card>(new Card[SIZE_NEXT_CARDS]);       // Deux prochaines cartes
+    public List<ItemModel> lPlayerHand = new List<ItemModel>(new ItemModel[SIZE_HAND]);        // Main du joueur
+    public List<ItemModel> lNextCards = new List<ItemModel>(new ItemModel[SIZE_NEXT_CARDS]);       // Deux prochaines cartes
 
     public const int SIZE_HAND = 4;
     public const int SIZE_NEXT_CARDS = 2;
@@ -50,9 +50,9 @@ public class PlayerHandModel
     // ----------------------------------------------
     // CreateRandomCard
     // ----------------------------------------------
-    public Card CreateRandomCard()
+    public ItemModel CreateRandomCard()
     {
-        Card card = null;
+        ItemModel item = null;
 
         // Random card type
         CardType cardType = (CardType)Random.Range(0, 2);
@@ -62,11 +62,11 @@ public class PlayerHandModel
             WeaponType type = (WeaponType)Random.Range(0, 2);
             switch (type)
             {
-                case WeaponType.HUNTING_RIFLE:
-                    card = new HuntingRifleCard();
+                case WeaponType.SPEAR:
+                    item = new Spear();
                     break;
-                case WeaponType.KNIFE:
-                    card = new Knife();
+                case WeaponType.TORCH:
+                    item = new Torch();
                     break;
             }
         }
@@ -76,15 +76,15 @@ public class PlayerHandModel
             switch (type)
             {
                 case TrapType.BEAR_TRAP:
-                    card = new BearTrapCard();
+                    item = new BearTrap();
                     break;
-                case TrapType.LEAVES_TRAP:
-                    card = new LeavesTrapCard();
+                case TrapType.NET_TRAP:
+                    item = new NetTrap();
                     break;
             }
         }
 
-        return card;
+        return item;
     }
 
     public void AddNextCardToHand(int index)
@@ -99,7 +99,7 @@ public class PlayerHandModel
     // OnCardPlayed
     // ----------------------------------------------
     // When a card is played from UI this method is called
-    public void OnCardPlayed(Card card, int index)
+    public void OnCardPlayed(ItemModel card, int index)
     {
 
     }
