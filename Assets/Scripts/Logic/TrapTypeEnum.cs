@@ -1,5 +1,5 @@
 public enum TrapType
 {
     BEAR_TRAP,
-    LEAVES_TRAP,
+    NET_TRAP,
 }

@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class PlayerHand : MonoBehaviour
 {
-    public GameObject beartrapCardPrefab;
+    public GameObject bearTrapCardPrefab;
+    public GameObject netTrapCardPrefab;
+    public GameObject spearCardPrefab;
+    public GameObject torchCardPrefab;
+    public GameObject mercenaryCardPrefab;
+    public GameObject rexCardPrefab;
+    public GameObject snowmanCardPrefab;
+    public GameObject scarecrowCardPrefab;
+    public GameObject restoreCardPrefab;
 
     private PlayerHandModel _PlayerHandModel;
 
@@ -22,17 +30,24 @@ public class PlayerHand : MonoBehaviour
 
     public void Refresh()
     {
-        foreach (Card card in PlayerHandModel.instance.lPlayerHand)
+        foreach (ItemModel card in PlayerHandModel.instance.lPlayerHand)
         {
             CardType cardType = card.type;
+            GameObject gameObject = null;
 
             // Cartes WEAPON
             if (cardType == CardType.WEAPON)
             {
-                WeaponCard weaponCard = (WeaponCard)card;
+                WeaponModel weaponCard = (WeaponModel)card;
                 switch (weaponCard.weaponType)
                 {
-                    case WeaponType.HUNTING_RIFLE:
+                    case WeaponType.SPEAR:
+                        gameObject = Instantiate(spearCardPrefab, transform);
+                        gameObject.transform.localPosition = Vector3.zero;
+                        break;
+                    case WeaponType.TORCH:
+                        gameObject = Instantiate(torchCardPrefab, transform);
+                        gameObject.transform.localPosition = Vector3.zero;
                         break;
                 }
             }
@@ -40,12 +55,17 @@ public class PlayerHand : MonoBehaviour
             // Cartes TRAP
             if (cardType == CardType.TRAP)
             {
-                TrapCard trapCard = (TrapCard)card;
+                TrapModel trapCard = (TrapModel)card;
+
                 switch (trapCard.trapType)
                 {
                     case TrapType.BEAR_TRAP:
-                        GameObject ennemyGO = Instantiate(beartrapCardPrefab, transform);
-                        ennemyGO.transform.localPosition = Vector3.zero;
+                        gameObject = Instantiate(bearTrapCardPrefab, transform);
+                        gameObject.transform.localPosition = Vector3.zero;
+                        break;
+                    case TrapType.NET_TRAP:
+                        gameObject = Instantiate(netTrapCardPrefab, transform);
+                        gameObject.transform.localPosition = Vector3.zero;
                         break;
                 }
             }

@@ -16,7 +16,7 @@ public class BoardModel
     public static BoardModel instance;
     public static Tile[,] _Board = new Tile[SIZE_ROW, SIZE_COL];    
     public static List<Ennemy> _lEnnemies = new List<Ennemy>();          // Liste des references sur les ennemis en jeu
-    public static List<Trap> _lTraps = new List<Trap>();          // Liste des references sur les pièges en jeu
+    public static List<TrapTile> _lTraps = new List<TrapTile>();          // Liste des references sur les pièges en jeu
     public static bool _NeedRefresh = false;    // Pour refresh la visu
     public static bool needDestroy = false;
     //public static float _CycleTime = 3.0f;      // Temps entre l'ajout de deux ennemis
@@ -96,7 +96,7 @@ public class BoardModel
         }
         _lEnnemies.RemoveAll(x => x.ToDestroyFlag);
 
-        foreach (Trap trap in _lTraps)
+        foreach (TrapTile trap in _lTraps)
         {
             if (trap.ToDestroyFlag)
             {
@@ -131,10 +131,10 @@ public class BoardModel
     // ----------------------------------------------
     // Fait le lien entre une carte piège et l'objet piège
     // lorsque la carte est jouée
-    public void AddTrapFromCard(TrapCard iTrapCard, int iRow, int iCol)
+    public void AddTrapFromCard(TrapModel iTrapCard, int iRow, int iCol)
     {
         // Crée un piège du même type que la carte jouée
-        Trap trap = new Trap(iRow, iCol, iTrapCard.damage, iTrapCard.trapType);
+        TrapTile trap = new TrapTile(iRow, iCol, iTrapCard.damage, iTrapCard.trapType);
         _Board[iRow, iCol] = trap;
         _lTraps.Add(trap);
         _NeedRefresh = true;
@@ -166,7 +166,7 @@ public class BoardModel
                 string sOldTileType = _Board[NewEnnemyRowPos, NewEnnemyColPos].GetType().Name;
                 if (sOldTileType == "Trap")
                 {
-                    Trap TrapTile = (Trap)_Board[NewEnnemyRowPos, NewEnnemyColPos];
+                    TrapTile TrapTile = (TrapTile)_Board[NewEnnemyRowPos, NewEnnemyColPos];
                     TrapTile.Activate(ennemy);
                     TrapTile.ToDestroyFlag = true;
                     _Board[OldEnnemyRowPos, OldEnnemyColPos] = new Tile(OldEnnemyRowPos, OldEnnemyColPos);

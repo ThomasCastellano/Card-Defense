@@ -1,0 +1,8 @@
+public class Torch : WeaponModel
+{
+    const int DAMAGE = 2;
+    public Torch() : base("Torch", DAMAGE, WeaponType.TORCH)
+    {
+
+    }
+}

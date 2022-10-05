@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
@@ -27,11 +27,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         _rectTransform.anchoredPosition += eventData.delta;
     }
 
-    void IDropHandler.OnDrop(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
-    }
-
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
         _canvasGroup.alpha = 1f;
@@ -40,12 +35,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     // Start is called before the first frame update
