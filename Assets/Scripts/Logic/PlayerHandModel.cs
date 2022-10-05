@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class PlayerHandModel
 {
-    const int SIZE_HAND = 4;
-    const int SIZE_NEXT_CARDS = 2;
+    public static PlayerHandModel instance;
 
-    public static List<Card> _lPlayerHand = new List<Card>(new Card[SIZE_HAND]);        // Main du joueur
-    public static List<Card> _lNextCards = new List<Card>(new Card[SIZE_NEXT_CARDS]);       // Deux prochaines cartes
+    public List<Card> lPlayerHand = new List<Card>(new Card[SIZE_HAND]);        // Main du joueur
+    public List<Card> lNextCards = new List<Card>(new Card[SIZE_NEXT_CARDS]);       // Deux prochaines cartes
+
+    public const int SIZE_HAND = 4;
+    public const int SIZE_NEXT_CARDS = 2;
+
+    public bool needRefresh = false;
 
     // ----------------------------------------------
     // Constructor
     // ----------------------------------------------
     public PlayerHandModel()
     {
+        instance = this;
         BuildHand();
         BuildNextCards();
     }
@@ -26,8 +31,9 @@ public class PlayerHandModel
     {
         for (int i = 0; i < SIZE_HAND; i++)
         {
-            _lPlayerHand[i] = CreateRandomCard();
+            lPlayerHand[i] = CreateRandomCard();
         }
+        needRefresh = true;
     }
 
     // ----------------------------------------------
@@ -37,7 +43,7 @@ public class PlayerHandModel
     {
         for (int i = 0; i < SIZE_NEXT_CARDS; i++)
         {
-            _lNextCards[i] = CreateRandomCard();
+            lNextCards[i] = CreateRandomCard();
         }
     }
 
@@ -83,9 +89,10 @@ public class PlayerHandModel
 
     public void AddNextCardToHand(int index)
     {
-        _lPlayerHand[index] = _lNextCards[0];
-        _lNextCards[0] = _lNextCards[1];
-        _lNextCards[1] = CreateRandomCard();
+        lPlayerHand[index] = lNextCards[0];
+        lNextCards[0] = lNextCards[1];
+        lNextCards[1] = CreateRandomCard();
+        needRefresh = true;
     }
 
     // ----------------------------------------------
