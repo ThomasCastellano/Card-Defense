@@ -30,15 +30,15 @@ public class PlayerHand : MonoBehaviour
 
     public void Refresh()
     {
-        foreach (ItemModel card in PlayerHandModel.instance.lPlayerHand)
+        foreach (ItemModel itemModel in PlayerHandModel.instance.lPlayerHand)
         {
-            CardType cardType = card.type;
+            ItemType itemType = itemModel.itemType;
             GameObject gameObject = null;
 
             // Cartes WEAPON
-            if (cardType == CardType.WEAPON)
+            if (itemType == ItemType.WEAPON)
             {
-                WeaponModel weaponCard = (WeaponModel)card;
+                WeaponModel weaponCard = (WeaponModel)itemModel;
                 switch (weaponCard.weaponType)
                 {
                     case WeaponType.SPEAR:
@@ -53,9 +53,9 @@ public class PlayerHand : MonoBehaviour
             }
 
             // Cartes TRAP
-            if (cardType == CardType.TRAP)
+            if (itemType == ItemType.TRAP)
             {
-                TrapModel trapCard = (TrapModel)card;
+                TrapModel trapCard = (TrapModel)itemModel;
 
                 switch (trapCard.trapType)
                 {

@@ -55,9 +55,9 @@ public class PlayerHandModel
         ItemModel item = null;
 
         // Random card type
-        CardType cardType = (CardType)Random.Range(0, 2);
+        ItemType cardType = (ItemType)Random.Range(0, 2);
 
-        if (cardType == CardType.WEAPON)
+        if (cardType == ItemType.WEAPON)
         {
             WeaponType type = (WeaponType)Random.Range(0, 2);
             switch (type)
@@ -70,7 +70,7 @@ public class PlayerHandModel
                     break;
             }
         }
-        else if (cardType == CardType.TRAP)
+        else if (cardType == ItemType.TRAP)
         {
             TrapType type = (TrapType)Random.Range(0, 2);
             switch (type)

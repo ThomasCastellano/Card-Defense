@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
             _boardModel.DestroyFlaggedTiles();
         }
 
-        if (_SpawnTimer > _SpawnDelay && BoardModel._lEnnemies.Count < MAX_NUMBER_OF_ENNEMIES)
+        if (_SpawnTimer > _SpawnDelay && BoardModel._lEnnemyTile.Count < MAX_NUMBER_OF_ENNEMIES)
         {
             _boardModel.AddEnnemy();
             _SpawnTimer = 0;
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     void PlayTrapCard()
     {
         BearTrap trap = new BearTrap();
-        _boardModel.AddTrapFromCard(trap, Random.Range(0, 7), Random.Range(0, 3));
+        //_boardModel.AddTrapFromCard(trap, Random.Range(0, 7), Random.Range(0, 3));
     }
 
     [ContextMenu("Refresh")]

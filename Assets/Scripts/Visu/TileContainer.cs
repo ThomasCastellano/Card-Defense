@@ -8,12 +8,15 @@ public class TileContainer : MonoBehaviour
 {
     public int Row;
     public int Col;
-    public bool isfull;
+    //public bool isfull;
 
     public BoardModel boardModel;
-    //public Image backgroundImage;
 
     public GameObject bearPrefab;
+    public GameObject gnomePrefab;
+
+    public GameObject bearTrapPrefab;
+    public GameObject netTrapPrefab;
 
     private void Start()
     {
@@ -24,9 +27,10 @@ public class TileContainer : MonoBehaviour
     {
         Tile tile = boardModel.GetTile(Row, Col);
 
-        if (tile is Ennemy ennemy)
+        if (tile.tileType == TileType.ENNEMY)
         {
-            switch(ennemy.type)
+            Ennemy ennemy = ((EnnemyTile)tile).ennemyModel;
+            switch (ennemy.ennemyType)
             {
                 case EnnemyType.BEAR:
                     {
@@ -34,6 +38,13 @@ public class TileContainer : MonoBehaviour
                         ennemyGO.transform.localPosition = Vector3.zero;
                         break;
                     }
+                case EnnemyType.GNOME:
+                    {
+                        GameObject ennemyGO = Instantiate(gnomePrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+                    /*
                 default:
                     {
                         // on detruit la carte inutile
@@ -43,11 +54,27 @@ public class TileContainer : MonoBehaviour
                         }
                         break;
                     }
+                    */
             }
         }
-        else if (tile is TrapTile trap)
+        else if (tile.tileType == TileType.TRAP)
         {
-
+            TrapModel itemModel = (TrapModel)((ItemTile)tile).itemModel;
+            switch (itemModel.trapType)
+            {
+                case TrapType.BEAR_TRAP:
+                    {
+                        GameObject ennemyGO = Instantiate(bearTrapPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+                case TrapType.NET_TRAP:
+                    {
+                        GameObject ennemyGO = Instantiate(netTrapPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+            }
         }
         else
         {
@@ -58,19 +85,4 @@ public class TileContainer : MonoBehaviour
             }
         }
     }
-
-   public void OnTriggerEnter2D(Collider2D collision)
-   {
-         //if (gameManager.draggingObject !=null && isfull == false)
-        {
-            //gameManager.currentContainer = this.gameObject;
-            //backgroundImage.enabled = true;
-        }
-   }
-
-   public void OnTriggerExit2D(Collider2D collision)
-   {
-        //gameManager.currentContainer = null;
-        //backgroundImage.enabled = false;
-   }
 }

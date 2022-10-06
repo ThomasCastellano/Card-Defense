@@ -92,8 +92,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Row: 0
   Col: 0
-  isfull: 0
   bearPrefab: {fileID: 6574452197879787772, guid: 4fb3e0fe3b2d00b48879efa6d5dc35d7, type: 3}
+  gnomePrefab: {fileID: 5112812618197637475, guid: 5e1be8809edd7014889c566f0cf6253e, type: 3}
+  bearTrapPrefab: {fileID: 5112812618197637475, guid: 7faa7b5a7d5f2ae41935e8ea95a364bc, type: 3}
+  netTrapPrefab: {fileID: 5112812618197637475, guid: a2131dd2762ce0943bc01b85b0b850d5, type: 3}
 --- !u!114 &5631609979295609542
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1830027316477515449}
   - component: {fileID: 8806089223515298344}
   - component: {fileID: -9120395250115699025}
+  - component: {fileID: 4058204134345742771}
   m_Layer: 5
   m_Name: Card_Weapon_Spear_Prefab
   m_TagString: Untagged
@@ -103,6 +104,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 471278ca073d31340aa0ec8bb09e1df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4058204134345742771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125186883433440172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276de996dd247304b95feae44b9f884e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1245166810752544697

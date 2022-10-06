@@ -14,6 +14,7 @@ public class VisuGameManager : MonoBehaviour
         instance = this;
     } 
 
+    /*
     public void PlaceObject()
     {
         if (draggingObject != null && currentContainer != null)
@@ -22,4 +23,5 @@ public class VisuGameManager : MonoBehaviour
             currentContainer.GetComponent<TileContainer>().isfull = true;
         }
     }
+    */
 }

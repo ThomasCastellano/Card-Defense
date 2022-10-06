@@ -5,7 +5,7 @@ public abstract class WeaponModel : ItemModel
     public int damage;
     public WeaponType weaponType;
 
-    protected WeaponModel(string iName, int iDamage, WeaponType iWeaponType) : base(iName, CardType.WEAPON)
+    protected WeaponModel(int iDamage, WeaponType iWeaponType) : base(ItemType.WEAPON)
     {
         damage = iDamage;
         weaponType = iWeaponType;

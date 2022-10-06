@@ -2,14 +2,17 @@ using UnityEngine;
 
 public abstract class ItemModel
 {
-    public string name;
-    public CardType type;
+    //public bool ToDestroyFlag = false;
+    public ItemType itemType;
 
-    protected ItemModel(string iName, CardType iType)
+    public ItemTile tile;
+
+    protected ItemModel(ItemType iType)
     {
-        name = iName;
-        type = iType;
+        itemType = iType;
     }
+
+    //public abstract ItemTile CreateTile(int row, int col);
 
     public abstract void OnPlayed(int iRow, int iCol);
 
