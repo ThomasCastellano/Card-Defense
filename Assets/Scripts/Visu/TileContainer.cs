@@ -27,6 +27,12 @@ public class TileContainer : MonoBehaviour
     {
         Tile tile = boardModel.GetTile(Row, Col);
 
+        // Reset la tile
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         if (tile.tileType == TileType.ENNEMY)
         {
             Ennemy ennemy = ((EnnemyTile)tile).ennemyModel;
@@ -74,14 +80,6 @@ public class TileContainer : MonoBehaviour
                         ennemyGO.transform.localPosition = Vector3.zero;
                         break;
                     }
-            }
-        }
-        else
-        {
-            // Reset la tile
-            foreach (Transform child in transform)
-            {
-                Destroy(child.gameObject);
             }
         }
     }

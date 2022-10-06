@@ -13,14 +13,6 @@ public abstract class TrapModel : ItemModel
         trapType = iTrapType;
     }
 
-    /*
-    public override ItemTile CreateTile(int row, int col)
-    {
-        tile = new ItemTile(row, col, TileType.TRAP, this);
-        return tile;
-    }
-    */
-
     // ----------------------------------------------
     // Activate
     // ----------------------------------------------
