@@ -24,11 +24,6 @@ public abstract class TrapModel : ItemModel
             iEnnemy.tile.ToDestroyFlag = true;
         }
         this.tile.ToDestroyFlag = true;
-        BoardModel.needDestroy = true;
-    }
-
-    public override void OnPlayed(int iRow, int iCol)
-    {
-        
+        BoardModel.instance.needDestroy = true;
     }
 }

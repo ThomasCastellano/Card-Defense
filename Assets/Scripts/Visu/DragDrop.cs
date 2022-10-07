@@ -30,6 +30,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
         _canvasGroup.alpha = 1f;
+        _rectTransform.localScale *= 2f;
         _canvasGroup.blocksRaycasts = true;
     }
 

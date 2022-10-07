@@ -103,6 +103,7 @@
     <Compile Include="Assets\Paul\Script\Monster.cs" />
     <Compile Include="Assets\Scripts\Logic\ItemTile.cs" />
     <Compile Include="Assets\Scripts\Logic\Cards\BearTrap.cs" />
+    <Compile Include="Assets\Scripts\Visu\NextCards.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

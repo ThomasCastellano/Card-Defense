@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardObject: {fileID: 5112812618197637475, guid: 835d12ef44025544396d67760e239d8f, type: 3}
+  originalAnchoredPosition: {x: 0, y: 0, z: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1245166810752544697
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,10 +424,10 @@ RectTransform:
   m_Father: {fileID: 152033585324108049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -32, y: -30}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 73, y: 98}
+  m_SizeDelta: {x: -110, y: -156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1740857341016497028
 CanvasRenderer:

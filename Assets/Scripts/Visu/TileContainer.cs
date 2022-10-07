@@ -17,6 +17,10 @@ public class TileContainer : MonoBehaviour
 
     public GameObject bearTrapPrefab;
     public GameObject netTrapPrefab;
+    public GameObject snowmanPrefab;
+    public GameObject scarecrowPrefab;
+    public GameObject rexPrefab;
+    public GameObject mercenaryPrefab;
 
     private void Start()
     {
@@ -50,17 +54,6 @@ public class TileContainer : MonoBehaviour
                         ennemyGO.transform.localPosition = Vector3.zero;
                         break;
                     }
-                    /*
-                default:
-                    {
-                        // on detruit la carte inutile
-                        foreach(Transform child in transform)
-                        {
-                            Destroy(child);
-                        }
-                        break;
-                    }
-                    */
             }
         }
         else if (tile.tileType == TileType.TRAP)
@@ -77,6 +70,44 @@ public class TileContainer : MonoBehaviour
                 case TrapType.NET_TRAP:
                     {
                         GameObject ennemyGO = Instantiate(netTrapPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+            }
+        }
+        else if (tile.tileType == TileType.ALLY)
+        {
+            AllyModel itemModel = (AllyModel)((ItemTile)tile).itemModel;
+            switch (itemModel.allyType)
+            {
+                case AllyType.REX_DOG:
+                    {
+                        GameObject ennemyGO = Instantiate(rexPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+               case AllyType.MERCENARY:
+                    {
+                        GameObject ennemyGO = Instantiate(mercenaryPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+            }
+        }
+        else if (tile.tileType == TileType.DIVERSION)
+        {
+            DiversionModel itemModel = (DiversionModel)((ItemTile)tile).itemModel;
+            switch (itemModel.diversionType)
+            {
+                case DiversionType.SNOWMAN:
+                    {
+                        GameObject ennemyGO = Instantiate(snowmanPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+                case DiversionType.SCARECROW:
+                    {
+                        GameObject ennemyGO = Instantiate(scarecrowPrefab, transform);
                         ennemyGO.transform.localPosition = Vector3.zero;
                         break;
                     }

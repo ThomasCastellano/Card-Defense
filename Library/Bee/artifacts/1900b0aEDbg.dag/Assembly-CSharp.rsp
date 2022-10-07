@@ -396,6 +396,7 @@
 "Assets/Scripts/Visu/DragDrop.cs"
 "Assets/Scripts/Visu/DropSlot.cs"
 "Assets/Scripts/Visu/Ennemies Behavior/EnnemyBehaviour.cs"
+"Assets/Scripts/Visu/NextCards.cs"
 "Assets/Scripts/Visu/PlayerHand.cs"
 "Assets/Scripts/Visu/PlayGrid.cs"
 "Assets/Scripts/Visu/TileContainer.cs"

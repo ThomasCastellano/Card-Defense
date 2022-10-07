@@ -92,10 +92,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Row: 0
   Col: 0
-  bearPrefab: {fileID: 6574452197879787772, guid: 4fb3e0fe3b2d00b48879efa6d5dc35d7, type: 3}
+  bearPrefab: {fileID: 5112812618197637475, guid: 79e4b668e5630de4d8a6d030d0ed5f30, type: 3}
   gnomePrefab: {fileID: 5112812618197637475, guid: 5e1be8809edd7014889c566f0cf6253e, type: 3}
   bearTrapPrefab: {fileID: 5112812618197637475, guid: 7faa7b5a7d5f2ae41935e8ea95a364bc, type: 3}
   netTrapPrefab: {fileID: 5112812618197637475, guid: a2131dd2762ce0943bc01b85b0b850d5, type: 3}
+  snowmanPrefab: {fileID: 5112812618197637475, guid: 35eadfd60d221c14ea0d6cc3906da3ab, type: 3}
+  scarecrowPrefab: {fileID: 5112812618197637475, guid: 4e370fd7ca00b7745be35bbd4789223f, type: 3}
+  rexPrefab: {fileID: 5112812618197637475, guid: 835d12ef44025544396d67760e239d8f, type: 3}
+  mercenaryPrefab: {fileID: 5112812618197637475, guid: a49444586820dc240a7ca52b32d4987b, type: 3}
 --- !u!114 &5631609979295609542
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,12 +14,13 @@ public class BoardModel
     // Tableau 2D contenant une liste des Tiles à chaque emplacement
     // TODO : Les Tiles peuvent se superposés (ex: un piège et un ennemi)
     public static BoardModel instance;
-    public static Tile[,] _Board = new Tile[SIZE_ROW, SIZE_COL];    
-    public static List<EnnemyTile> _lEnnemyTile = new List<EnnemyTile>();          // Liste des references sur les ennemis en jeu
-    public static List<ItemTile> _lItemTile = new List<ItemTile>();          // Liste des references sur les pièges en jeu
-    public static bool _NeedRefresh = false;    // Pour refresh la visu
-    public static bool needDestroy = false;
-    //public static float _CycleTime = 3.0f;      // Temps entre l'ajout de deux ennemis
+
+    public Tile[,] _Board = new Tile[SIZE_ROW, SIZE_COL];    
+    public List<EnnemyTile> _lEnnemyTile = new List<EnnemyTile>();          // Liste des references sur les ennemis en jeu
+    public List<ItemTile> _lItemTile = new List<ItemTile>();          // Liste des references sur les pièges en jeu
+    public bool _NeedRefresh = false;    // Pour refresh la visu
+    public bool needDestroy = false;
+    //public float _CycleTime = 3.0f;      // Temps entre l'ajout de deux ennemis
 
     private float _TimerStart = 0.0f;
 
@@ -44,15 +45,6 @@ public class BoardModel
                 _Board[i, j] = new Tile(i, j);
             }
         }
-    }
-
-    // ----------------------------------------------
-    // UpdateBoard
-    // ----------------------------------------------
-    public void UpdateBoard()
-    {
-        
-
     }
 
     // ----------------------------------------------
@@ -174,39 +166,50 @@ public class BoardModel
     // ----------------------------------------------
     // PlayCard
     // ----------------------------------------------
-    public void PlayCard(CardBehaviour card, int iRow, int iCol)
-    {
-        ItemModel itemModel = card.itemModel;
-        GameObject objectPrefab = card.boardObject;
+    //public void PlayCard(CardBehaviour card, int iRow, int iCol)
+    //{
+    //    ItemModel itemModel = card.itemModel;
+    //    GameObject objectPrefab = card.boardObject;
 
-        if (itemModel == null)
-        {
-            Debug.LogError("No ItemModel found for the played card");
-            return;
-        }
+    //    if (itemModel == null)
+    //    {
+    //        Debug.LogError("No ItemModel found for the played card");
+    //        return;
+    //    }
 
-        if (itemModel is TrapModel)
-        {
-            TrapModel trapModel = (TrapModel)itemModel;
+    //    if (itemModel is WeaponModel)
+    //    {
+    //        WeaponModel weaponModel = (WeaponModel)itemModel;
 
-            // Crée un piège du même type que la carte jouée
-            ItemTile trap = new ItemTile(iRow, iCol, TileType.TRAP, trapModel, objectPrefab);
-            _Board[iRow, iCol] = trap;
-            _lItemTile.Add(trap);
-            _NeedRefresh = true;
-        }
-        else if (itemModel is AllyModel)
-        {
-            AllyModel allyModel = (AllyModel)itemModel;
+    //        Tile tile = _Board[iRow, iCol];
+    //        if (tile.tileType == TileType.ENNEMY)
+    //        {
+    //            Ennemy ennemyModel = ((EnnemyTile)tile).ennemyModel;
+    //            weaponModel.Activate(ennemyModel);
+    //        }
+    //    }
 
-            // Crée un piège du même type que la carte jouée
-            ItemTile trap = new ItemTile(iRow, iCol, TileType.ALLY, allyModel, objectPrefab);
-            _Board[iRow, iCol] = trap;
-            _lItemTile.Add(trap);
-            _NeedRefresh = true;
-        }
+    //    if (itemModel is TrapModel)
+    //    {
+    //        TrapModel trapModel = (TrapModel)itemModel;
 
-    }
+    //        // Crée un piège du même type que la carte jouée
+    //        ItemTile trap = new ItemTile(iRow, iCol, TileType.TRAP, trapModel, objectPrefab);
+    //        _Board[iRow, iCol] = trap;
+    //        _lItemTile.Add(trap);
+    //        _NeedRefresh = true;
+    //    }
+    //    else if (itemModel is AllyModel)
+    //    {
+    //        AllyModel allyModel = (AllyModel)itemModel;
+
+    //        // Crée un piège du même type que la carte jouée
+    //        ItemTile trap = new ItemTile(iRow, iCol, TileType.ALLY, allyModel, objectPrefab);
+    //        _Board[iRow, iCol] = trap;
+    //        _lItemTile.Add(trap);
+    //        _NeedRefresh = true;
+    //    }
+    //}
 
     // ----------------------------------------------
     // MoveEnnemies

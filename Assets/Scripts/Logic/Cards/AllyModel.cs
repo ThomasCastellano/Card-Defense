@@ -8,17 +8,4 @@ public abstract class AllyModel : ItemModel
         damage = iDamage;
         allyType = iAllyType;
     }
-
-    /*
-    public override ItemTile CreateTile(int row, int col)
-    {
-        tile = new ItemTile(row, col, TileType.ALLY, this);
-        return tile;
-    }
-    */
-
-    public override void OnPlayed(int iRow, int iCol)
-    {
-
-    }
 }

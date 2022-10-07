@@ -11,9 +11,4 @@ public abstract class ItemModel
     {
         itemType = iType;
     }
-
-    //public abstract ItemTile CreateTile(int row, int col);
-
-    public abstract void OnPlayed(int iRow, int iCol);
-
 }

@@ -11,8 +11,17 @@ public abstract class WeaponModel : ItemModel
         weaponType = iWeaponType;
     }
 
-    public override void OnPlayed(int iRow, int iCol)
+    // ----------------------------------------------
+    // Activate
+    // ----------------------------------------------
+    public void Activate(Ennemy iEnnemy)
     {
-
+        iEnnemy.Hp -= damage;
+        if (iEnnemy.Hp <= 0)
+        {
+            iEnnemy.tile.ToDestroyFlag = true;
+        }
+        //this.tile.ToDestroyFlag = true;
+        BoardModel.instance.needDestroy = true;
     }
 }

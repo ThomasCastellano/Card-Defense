@@ -53,10 +53,10 @@ public class Ennemy
             if (Move > 0 && tile.Row < BoardModel.SIZE_ROW-1)
             {
                 // Si pas d'ennemi sur la case on déplace
-                if (BoardModel._Board[tile.Row + Move, tile.Col].tileType != TileType.ENNEMY)
+                if (BoardModel.instance._Board[tile.Row + Move, tile.Col].tileType != TileType.ENNEMY)
                 {
                     tile.Row += Move;
-                    BoardModel._NeedRefresh = true;
+                    BoardModel.instance._NeedRefresh = true;
                     _MovementTimer = 0;
                     return true;
                 }
@@ -69,7 +69,7 @@ public class Ennemy
             // TODO: Bloquer une carte pour le joueur
 
             tile.ToDestroyFlag = true;
-            BoardModel.needDestroy = true;
+            BoardModel.instance.needDestroy = true;
         }
 
         _MovementTimer += Time.deltaTime;

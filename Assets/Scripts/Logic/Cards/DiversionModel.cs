@@ -10,17 +10,4 @@ public abstract class DiversionModel : ItemModel
     {
         diversionType = iDiversionType;
     }
-
-    /*
-    public override ItemTile CreateTile(int row, int col)
-    {
-        tile = new ItemTile(row, col, ItemToTile.DIVERSION, this, );
-        return tile;
-    }
-    */
-
-    public override void OnPlayed(int iRow, int iCol)
-    {
-
-    }
 }

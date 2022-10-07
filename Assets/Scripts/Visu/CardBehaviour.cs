@@ -7,6 +7,9 @@ public class CardBehaviour : MonoBehaviour
     public ItemModel itemModel;   // logic
     public GameObject boardObject;  // visu
 
+    public Vector3 originalAnchoredPosition;    // Original anchored position in player's hand to reset drag n drop
+    public Vector3 originalPosition;            // Original position in player's hand to reset drag n drop
+
     private BoardModel _boardModel;
 
     void Start()
@@ -16,11 +19,7 @@ public class CardBehaviour : MonoBehaviour
         {
             Debug.LogError("No instance of BoardModel found");
         }
-    }
-
-    public ItemTile CreateTile(int row, int col)
-    {
-        itemModel.tile = new ItemTile(row, col, TileType.DIVERSION, itemModel, boardObject);
-        return itemModel.tile;
+        originalAnchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        originalPosition = transform.position;
     }
 }
