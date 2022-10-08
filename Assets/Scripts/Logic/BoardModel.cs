@@ -206,8 +206,11 @@ public class BoardModel
                     if (ennemy.Hp <= 0)
                     {
                         _Board[OldEnnemyRowPos, OldEnnemyColPos] = new Tile(OldEnnemyRowPos, OldEnnemyRowPos);
-                        return;
                     }
+                    ennemy.tile.Row = OldEnnemyRowPos;
+                    ennemy.tile.Col = OldEnnemyColPos;
+                    _NeedRefresh = true;
+                    return;
                 }
                 else
                 {

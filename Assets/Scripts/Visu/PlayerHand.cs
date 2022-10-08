@@ -6,7 +6,9 @@ public class PlayerHand : MonoBehaviour
 {
     public const int SIZE_HAND = 4;
 
-    public List<CardBehaviour> lPlayerHand = new List<CardBehaviour>(new CardBehaviour[SIZE_HAND]);
+#nullable enable
+    public List<CardBehaviour?> lPlayerHand = new List<CardBehaviour?>(new CardBehaviour?[SIZE_HAND]);
+#nullable disable
 
     public GameObject bearTrapCardPrefab;
     public GameObject netTrapCardPrefab;
@@ -76,7 +78,7 @@ public class PlayerHand : MonoBehaviour
             {
                 CardBehaviour card = CreateCardFromModel(itemModel);
                 lPlayerHand[i] = card;
-                card.gameObject.transform.parent = this.transform;
+                card.gameObject.transform.SetParent(this.transform);
             }
         }
     }
@@ -170,7 +172,7 @@ public class PlayerHand : MonoBehaviour
     public void OnCardPlayed(CardBehaviour card)
     {
         int index = lPlayerHand.IndexOf(card);
-        lPlayerHand[index] = new CardBehaviour();  // Pas de remove pour garder une taille de SIZE_HAND
+        lPlayerHand[index] = null;  // Pas de remove pour garder une taille de SIZE_HAND
 
         Destroy(card.gameObject);
 
