@@ -52,6 +52,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-        //throw new System.NotImplementedException();
+        //_gameManager.playerHand.gameObject.SetActive(false);
+        //_gameManager.playerHand.gameObject.SetActive(true);
     }
 }
