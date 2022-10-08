@@ -8,13 +8,8 @@ public class GnomeEnnemy : Ennemy
     const float BASE_SPEED = 2;
     const int BASE_MOVEMENT = 1;
 
-    public void Start()
+    public GnomeEnnemy() : base(BASE_HP, BASE_SPEED, BASE_MOVEMENT, EnnemyType.GNOME)
     {
-        Init(BASE_HP, BASE_SPEED, BASE_MOVEMENT, EnnemyType.GNOME);
+
     }
-
-    //public GnomeEnnemy() : base(BASE_HP, BASE_SPEED, BASE_MOVEMENT, EnnemyType.GNOME)
-    //{
-
-    //}
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,12 +47,14 @@ public class TileContainer : MonoBehaviour
                     {
                         GameObject ennemyGO = Instantiate(bearPrefab, transform);
                         ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = ennemy.Hp.ToString();
                         break;
                     }
                 case EnnemyType.GNOME:
                     {
                         GameObject ennemyGO = Instantiate(gnomePrefab, transform);
                         ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = ennemy.Hp.ToString();
                         break;
                     }
             }

@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Ennemy : MonoBehaviour
+public class Ennemy
 {
     public int Hp;         // Health
     public int Movement;   // Distance de déplacement max
@@ -14,9 +14,9 @@ public class Ennemy : MonoBehaviour
     private float _BlockTimer = 0f;
 
     // ----------------------------------------------
-    // Init
+    // Constructor
     // ----------------------------------------------
-    public void Init(int iHP, float iSpeed, int iMovement, EnnemyType iType)
+    public Ennemy(int iHP, float iSpeed, int iMovement, EnnemyType iType)
     {
         Hp = iHP;
         Speed = iSpeed;
@@ -36,7 +36,7 @@ public class Ennemy : MonoBehaviour
         if (_BlockTimer <= 0 && _MovementTimer > Speed)
         {
             // Porté du mouvement random
-            int Move = Random.Range(0, Movement+1);
+            int Move = Random.Range(0, Movement + 1);
 
             // Le monstre ne peut pas attaquer le joueur avec un saut de plus de 1
             if (Move > 0 && tile.Row == BoardModel.SIZE_ROW - 1)
@@ -51,7 +51,7 @@ public class Ennemy : MonoBehaviour
                 }
             }
 
-            if (Move > 0 && tile.Row < BoardModel.SIZE_ROW-1)
+            if (Move > 0 && tile.Row < BoardModel.SIZE_ROW - 1)
             {
                 // Si pas d'ennemi sur la case on déplace
                 if (BoardModel.instance._Board[tile.Row + Move, tile.Col].tileType != TileType.ENNEMY)
@@ -65,7 +65,7 @@ public class Ennemy : MonoBehaviour
 
         }
 
-        if (tile.Row >= BoardModel.SIZE_ROW-1)
+        if (tile.Row >= BoardModel.SIZE_ROW - 1)
         {
             // TODO: Bloquer une carte pour le joueur
 

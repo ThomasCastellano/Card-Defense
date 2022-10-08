@@ -39,6 +39,7 @@ public class NextCards : MonoBehaviour
     public GameObject OnDraw()
     {
         GameObject gameObject = lNextCards[0].gameObject;
+        gameObject.GetComponent<CardBehaviour>().dragable = true;
         Destroy(lNextCards[0].gameObject);
         lNextCards[0] = lNextCards[1];
         lNextCards[1] = CreateNextCard();

@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7392601881091868474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +138,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91baec4ae8e25804f91a85f6ea127050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lPlayerHand:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bearTrapCardPrefab: {fileID: 1125186883433440172, guid: 5080377e8d5ecff43aaae82fb85e9648, type: 3}
   netTrapCardPrefab: {fileID: 1125186883433440172, guid: 45f844fe9134ab541b35583d5a9eb6e4, type: 3}
   spearCardPrefab: {fileID: 1125186883433440172, guid: e0cece34c32e29649b3c7793749072e2, type: 3}
