@@ -21,9 +21,9 @@ public class NextCards : MonoBehaviour
     public GameObject restoreCardPrefab;
 
     // ----------------------------------------------
-    // Start
+    // Awake
     // ----------------------------------------------
-    void Start()
+    void Awake()
     {
         instance = this;
         for (int i = 0; i < lNextCards.Count; i++)
@@ -43,7 +43,7 @@ public class NextCards : MonoBehaviour
         lNextCards[0] = lNextCards[1];
         lNextCards[1] = CreateNextCard();
 
-        Refresh();
+        //Refresh();
 
         return gameObject;
     }
@@ -123,6 +123,7 @@ public class NextCards : MonoBehaviour
         }
 
         CardBehaviour card = CreateCardFromModel(item);
+        card.dragable = false;
         //card.itemModel = item;
         return card;
     }

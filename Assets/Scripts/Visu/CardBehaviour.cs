@@ -10,6 +10,8 @@ public class CardBehaviour : MonoBehaviour
     public Vector3 originalAnchoredPosition;    // Original anchored position in player's hand to reset drag n drop
     public Vector3 originalPosition;            // Original position in player's hand to reset drag n drop
 
+    public bool dragable = true;
+
     private BoardModel _boardModel;
 
     void Start()

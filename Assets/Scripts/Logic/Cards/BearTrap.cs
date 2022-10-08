@@ -8,4 +8,18 @@ public class BearTrap : TrapModel
     {
         
     }
+
+    // ----------------------------------------------
+    // Activate
+    // ----------------------------------------------
+    public override void Activate(Ennemy iEnnemy)
+    {
+        iEnnemy.Hp -= damage;
+        if (iEnnemy.Hp <= 0)
+        {
+            iEnnemy.tile.ToDestroyFlag = true;
+        }
+        this.tile.ToDestroyFlag = true;
+        BoardModel.instance.needDestroy = true;
+    }
 }

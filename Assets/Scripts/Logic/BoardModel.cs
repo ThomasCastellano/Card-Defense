@@ -146,74 +146,6 @@ public class BoardModel
         }
     }
 
-    // ----------------------------------------------
-    // AddTrapFromCard
-    // ----------------------------------------------
-    // Fait le lien entre une carte piège et l'objet piège
-    // lorsque la carte est jouée
-    /*
-    public void AddTrapFromCard(TrapModel iTrapCard, int iRow, int iCol)
-    {
-        // Crée un piège du même type que la carte jouée
-        TrapTile trap = new TrapTile(iRow, iCol, iTrapCard.damage, iTrapCard.trapType);
-        _Board[iRow, iCol] = trap;
-        _lItemTile.Add(trap);
-        _NeedRefresh = true;
-    }
-    */
-
-
-    // ----------------------------------------------
-    // PlayCard
-    // ----------------------------------------------
-    //public void PlayCard(CardBehaviour card, int iRow, int iCol)
-    //{
-    //    ItemModel itemModel = card.itemModel;
-    //    GameObject objectPrefab = card.boardObject;
-
-    //    if (itemModel == null)
-    //    {
-    //        Debug.LogError("No ItemModel found for the played card");
-    //        return;
-    //    }
-
-    //    if (itemModel is WeaponModel)
-    //    {
-    //        WeaponModel weaponModel = (WeaponModel)itemModel;
-
-    //        Tile tile = _Board[iRow, iCol];
-    //        if (tile.tileType == TileType.ENNEMY)
-    //        {
-    //            Ennemy ennemyModel = ((EnnemyTile)tile).ennemyModel;
-    //            weaponModel.Activate(ennemyModel);
-    //        }
-    //    }
-
-    //    if (itemModel is TrapModel)
-    //    {
-    //        TrapModel trapModel = (TrapModel)itemModel;
-
-    //        // Crée un piège du même type que la carte jouée
-    //        ItemTile trap = new ItemTile(iRow, iCol, TileType.TRAP, trapModel, objectPrefab);
-    //        _Board[iRow, iCol] = trap;
-    //        _lItemTile.Add(trap);
-    //        _NeedRefresh = true;
-    //    }
-    //    else if (itemModel is AllyModel)
-    //    {
-    //        AllyModel allyModel = (AllyModel)itemModel;
-
-    //        // Crée un piège du même type que la carte jouée
-    //        ItemTile trap = new ItemTile(iRow, iCol, TileType.ALLY, allyModel, objectPrefab);
-    //        _Board[iRow, iCol] = trap;
-    //        _lItemTile.Add(trap);
-    //        _NeedRefresh = true;
-    //    }
-    //}
-
-    // ----------------------------------------------
-    // MoveEnnemies
-    // ----------------------------------------------
     public void MoveEnnemies()
     {
         foreach (EnnemyTile ennemyTile in _lEnnemyTile)
@@ -240,8 +172,42 @@ public class BoardModel
                 {
                     TrapModel trapModel = (TrapModel)((ItemTile)oldTile).itemModel;
                     trapModel.Activate(ennemy);
-                    trapModel.tile.ToDestroyFlag = true;
-                    _Board[OldEnnemyRowPos, OldEnnemyColPos] = new Tile(OldEnnemyRowPos, OldEnnemyColPos);
+                    if (trapModel.trapType == TrapType.NET_TRAP)
+                    {
+                        _Board[NewEnnemyRowPos, NewEnnemyColPos] = new Tile(NewEnnemyRowPos, NewEnnemyColPos);
+                        // On laisse l'ennemi sur sa tile initiale
+                        ennemy.tile.Row = OldEnnemyRowPos;
+                        ennemy.tile.Col = OldEnnemyColPos;
+                        //NewEnnemyRowPos = OldEnnemyRowPos;
+                        _NeedRefresh = true;
+                        return;
+                    }
+                    else
+                    {
+                        _Board[OldEnnemyRowPos, OldEnnemyColPos] = new Tile(OldEnnemyRowPos, OldEnnemyColPos);
+                    }
+                }
+                else if (oldTile.tileType == TileType.DIVERSION)
+                {
+                    DiversionModel diversionModel = (DiversionModel)((ItemTile)oldTile).itemModel;
+                    diversionModel.Activate(ennemy);
+                    _Board[NewEnnemyRowPos, NewEnnemyColPos] = new Tile(NewEnnemyRowPos, NewEnnemyColPos);
+                    // On laisse l'ennemi sur sa tile initiale
+                    ennemy.tile.Row = OldEnnemyRowPos;
+                    ennemy.tile.Col = OldEnnemyColPos;
+                    //NewEnnemyRowPos = OldEnnemyRowPos;
+                    _NeedRefresh = true;
+                    return;
+                }
+                else if (oldTile.tileType == TileType.ALLY)
+                {
+                    AllyModel allyModel = (AllyModel)((ItemTile)oldTile).itemModel;
+                    allyModel.Activate(ennemy);
+                    if (ennemy.Hp <= 0)
+                    {
+                        _Board[OldEnnemyRowPos, OldEnnemyColPos] = new Tile(OldEnnemyRowPos, OldEnnemyRowPos);
+                        return;
+                    }
                 }
                 else
                 {

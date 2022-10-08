@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Ennemy
+public class Ennemy : MonoBehaviour
 {
     public int Hp;         // Health
     public int Movement;   // Distance de déplacement max
@@ -11,11 +11,12 @@ public class Ennemy
     public GameObject ennemyPrefab;
 
     private float _MovementTimer = 0f;
+    private float _BlockTimer = 0f;
 
     // ----------------------------------------------
-    // Constructor
+    // Init
     // ----------------------------------------------
-    public Ennemy(int iHP, int iSpeed, int iMovement, EnnemyType iType)
+    public void Init(int iHP, float iSpeed, int iMovement, EnnemyType iType)
     {
         Hp = iHP;
         Speed = iSpeed;
@@ -32,7 +33,7 @@ public class Ennemy
     // @return False : the ennemy was unable to move
     public bool MoveDown()
     {
-        if (_MovementTimer > Speed)
+        if (_BlockTimer <= 0 && _MovementTimer > Speed)
         {
             // Porté du mouvement random
             int Move = Random.Range(0, Movement+1);
@@ -73,7 +74,15 @@ public class Ennemy
         }
 
         _MovementTimer += Time.deltaTime;
+        _BlockTimer -= Time.deltaTime;
         return false;
     }
 
+    // ----------------------------------------------
+    // FreezeMovement
+    // ----------------------------------------------
+    public void FreezeMovement(float blockTime)
+    {
+        _BlockTimer = blockTime;
+    }
 }

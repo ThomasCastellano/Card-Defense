@@ -400,6 +400,7 @@
 "Assets/Scripts/Visu/PlayerHand.cs"
 "Assets/Scripts/Visu/PlayGrid.cs"
 "Assets/Scripts/Visu/TileContainer.cs"
+"Assets/Scripts/Visu/TMPHp.cs"
 -langversion:9.0
 
 /deterministic

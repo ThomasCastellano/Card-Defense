@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
             ItemTile trap = new ItemTile(iRow, iCol, TileType.TRAP, trapModel, objectPrefab);
             _boardModel._Board[iRow, iCol] = trap;
             _boardModel._lItemTile.Add(trap);
+            trapModel.tile = trap;
             _boardModel._NeedRefresh = true;
         }
         else if (itemModel is AllyModel)
@@ -116,6 +117,17 @@ public class GameManager : MonoBehaviour
             ItemTile ally = new ItemTile(iRow, iCol, TileType.ALLY, allyModel, objectPrefab);
             _boardModel._Board[iRow, iCol] = ally;
             _boardModel._lItemTile.Add(ally);
+            allyModel.tile = ally;
+            _boardModel._NeedRefresh = true;
+        }
+        else if (itemModel is DiversionModel)
+        {
+            DiversionModel diversionModel = (DiversionModel)itemModel;
+
+            ItemTile diversion = new ItemTile(iRow, iCol, TileType.DIVERSION, diversionModel, objectPrefab);
+            _boardModel._Board[iRow, iCol] = diversion;
+            _boardModel._lItemTile.Add(diversion);
+            diversionModel.tile = diversion;
             _boardModel._NeedRefresh = true;
         }
 

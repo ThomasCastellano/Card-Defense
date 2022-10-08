@@ -10,4 +10,6 @@ public abstract class DiversionModel : ItemModel
     {
         diversionType = iDiversionType;
     }
+
+    public abstract void Activate(Ennemy iEnnemy);
 }

@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Logic\Cards\RexDog.cs" />
     <Compile Include="Assets\Scripts\Logic\Enums.cs" />
     <Compile Include="Assets\Scripts\Logic\Cards\Mercenary.cs" />
+    <Compile Include="Assets\Scripts\Visu\NextCards.cs" />
     <Compile Include="Assets\Scripts\Logic\Ennemies\Ennemy.cs" />
     <Compile Include="Assets\Scripts\Logic\Tile.cs" />
     <Compile Include="Assets\Scripts\Visu\Cards Behaviour\RexBehaviour.cs" />
@@ -103,7 +104,7 @@
     <Compile Include="Assets\Paul\Script\Monster.cs" />
     <Compile Include="Assets\Scripts\Logic\ItemTile.cs" />
     <Compile Include="Assets\Scripts\Logic\Cards\BearTrap.cs" />
-    <Compile Include="Assets\Scripts\Visu\NextCards.cs" />
+    <Compile Include="Assets\Scripts\Visu\TMPHp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

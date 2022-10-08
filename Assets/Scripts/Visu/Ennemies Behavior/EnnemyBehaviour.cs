@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class EnnemyBehaviour : MonoBehaviour
-{
-    public GameObject ennemyPrefab;
+//public class EnnemyBehaviour : MonoBehaviour
+//{
+//    public GameObject ennemyPrefab;
 
-}
+//}
