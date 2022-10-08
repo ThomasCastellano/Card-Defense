@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,6 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static float _SpawnDelay = 5.0f;      // Temps entre l'ajout de deux ennemis
     public const int MAX_NUMBER_OF_ENNEMIES = 12;
+
+    [SerializeField] private TextMeshProUGUI gameTimerGUI;
+    private float _gameTimer = 0f;
 
     public StateMachine State;
     public GameObject playGrid;
@@ -19,6 +23,7 @@ public class GameManager : MonoBehaviour
     //private PlayerHandModel _playerHandModel;
 
     private float _SpawnTimer = 0f;
+    private int _NbBlockedCards = 0;
 
     // ----------------------------------------------
     // Awake
@@ -34,7 +39,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _boardModel = new BoardModel();
-        //_playerHandModel = new PlayerHandModel();
+        playerHand = PlayerHand.instance;
+        _gameTimer = 0f;
 
     }
 
@@ -43,13 +49,20 @@ public class GameManager : MonoBehaviour
     // ----------------------------------------------
     void Update()
     {
+        // Update game timer
+        _gameTimer += Time.deltaTime;
+        gameTimerGUI.text = _gameTimer.ToString("0.00") + " s";
+
+        // Move ennemies
         _boardModel.MoveEnnemies();
 
+        // Clean Board
         if (_boardModel.needDestroy)
         {
             _boardModel.DestroyFlaggedTiles();
         }
 
+        // Spawn ennemies
         if (_SpawnTimer > _SpawnDelay && _boardModel._lEnnemyTile.Count < MAX_NUMBER_OF_ENNEMIES)
         {
             _boardModel.AddEnnemy();
@@ -57,6 +70,7 @@ public class GameManager : MonoBehaviour
         }
         _SpawnTimer += Time.deltaTime;
 
+        // Refresh displayed objects
         if (_boardModel._NeedRefresh)
         {
             _boardModel.RefreshDisplay();
@@ -66,11 +80,20 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //if (_playerHandModel.needRefresh)
-        //{
-        //    playerHand.Refresh();
-        //    _playerHandModel.needRefresh = false;
-        //}
+        // Check if all cards are blocked for game over
+        _NbBlockedCards = 0;
+        for (int i = 0; i < playerHand.lIsCardPlayable.Count; i++)
+        {
+            if (playerHand.lIsCardPlayable[i] == false)
+            {
+                _NbBlockedCards++;
+            }
+        }
+        if (_NbBlockedCards == playerHand.lIsCardPlayable.Count)
+        {
+            // GAME OVER YEAAAAH
+            Debug.Log("GAME OVER YEAAAAH");
+        }
     }
 
     // ----------------------------------------------

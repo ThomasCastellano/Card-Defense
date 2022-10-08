@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour
 {
     public const int SIZE_HAND = 4;
 
+    public static PlayerHand instance;
+
 #nullable enable
     public List<CardBehaviour?> lPlayerHand = new List<CardBehaviour?>(new CardBehaviour?[SIZE_HAND]);
 #nullable disable
+    // Liste permettant de vérifier si un emplacement de carte est bloqué
+    // après qu'un ennemie a atteint le joueur
+    public List<bool> lIsCardPlayable = new List<bool>(new bool[SIZE_HAND]);
 
     public GameObject bearTrapCardPrefab;
     public GameObject netTrapCardPrefab;
@@ -25,17 +31,22 @@ public class PlayerHand : MonoBehaviour
 
 
     // ----------------------------------------------
+    // Awake
+    // ----------------------------------------------
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    // ----------------------------------------------
     // Start
     // ----------------------------------------------
     void Start()
     {
-        //_PlayerHandModel = PlayerHandModel.instance;
-        //_NextCards = NextCards.instance;
-        //InitPlayerHand();
-
         for (int i = 0; i < SIZE_HAND; i++)
         {
             DrawCard(i);
+            lIsCardPlayable[i] = true;
         }
         Refresh();
     }
@@ -47,8 +58,6 @@ public class PlayerHand : MonoBehaviour
     {
         if (index < lPlayerHand.Count)
         {
-            //lPlayerHand[index] = _NextCards.lNextCards[0];
-            //_NextCards.OnDraw();
             GameObject gameObject = _NextCards.OnDraw();
             lPlayerHand[index] = gameObject.GetComponent<CardBehaviour>();
         }
@@ -59,19 +68,14 @@ public class PlayerHand : MonoBehaviour
     // ----------------------------------------------
     public void Refresh()
     {
-        // Supprime tous les childs
+        // Supprime tous les childs (cartes)
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
         }
 
         // Recrée les cartes
-        //foreach (CardBehaviour card in lPlayerHand)
-        //{
-        //    card.gameObject.transform.parent = this.transform;
-        //}
-
-        for (int i = 0; i < lPlayerHand.Count; i++)
+        for (int i = 0; i < SIZE_HAND; i++)
         {
             ItemModel itemModel = lPlayerHand[i].itemModel;
             if (itemModel != null)
@@ -79,6 +83,11 @@ public class PlayerHand : MonoBehaviour
                 CardBehaviour card = CreateCardFromModel(itemModel);
                 lPlayerHand[i] = card;
                 card.gameObject.transform.SetParent(this.transform);
+                if (lIsCardPlayable[i] == false)
+                {
+                    card.dragable = false;
+                    card.GetComponent<Image>().color = Color.gray;
+                }
             }
         }
     }
@@ -172,32 +181,11 @@ public class PlayerHand : MonoBehaviour
     public void OnCardPlayed(CardBehaviour card)
     {
         int index = lPlayerHand.IndexOf(card);
-        lPlayerHand[index] = null;  // Pas de remove pour garder une taille de SIZE_HAND
+        lPlayerHand[index] = null;  // Pas de remove pour garder une taille fixe de SIZE_HAND
 
         Destroy(card.gameObject);
 
         DrawCard(index);
         Refresh();
-
-        //int index = lPlayerHand.IndexOf(cardItemModel);
-        //Debug.Log(cardItemModel.GetHashCode());
-        //foreach (ItemModel i in lPlayerHand)
-        //{
-        //    Debug.Log(i.GetHashCode());
-        //}
-        //Debug.Log(lPlayerHand.IndexOf(cardItemModel));
-        //Debug.Log(lPlayerHand.Contains(cardItemModel));
-        //for (int i = 0; i < lPlayerHand.Count; i++)
-        //{
-        //    if (lPlayerHand[i].GetHashCode() == cardItemModel.GetHashCode())
-        //    {
-        //        index = i;
-        //    }
-        //}
-        //if (index > -1)
-        //{
-        //lPlayerHand.Remove(cardItemModel);
-        //AddNextCardToHand(index);
-        //}
     }
 }

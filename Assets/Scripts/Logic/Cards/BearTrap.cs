@@ -19,7 +19,7 @@ public class BearTrap : TrapModel
         {
             iEnnemy.tile.ToDestroyFlag = true;
         }
-        this.tile.ToDestroyFlag = true;
+        //this.tile.ToDestroyFlag = true;
         BoardModel.instance.needDestroy = true;
     }
 }

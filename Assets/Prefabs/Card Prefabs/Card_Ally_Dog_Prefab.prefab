@@ -121,6 +121,7 @@ MonoBehaviour:
   boardObject: {fileID: 5112812618197637475, guid: 835d12ef44025544396d67760e239d8f, type: 3}
   originalAnchoredPosition: {x: 0, y: 0, z: 0}
   originalPosition: {x: 0, y: 0, z: 0}
+  dragable: 1
 --- !u!1 &1245166810752544697
 GameObject:
   m_ObjectHideFlags: 0

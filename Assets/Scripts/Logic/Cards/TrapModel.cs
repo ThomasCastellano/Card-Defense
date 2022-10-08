@@ -17,13 +17,5 @@ public abstract class TrapModel : ItemModel
     // Activate
     // ----------------------------------------------
     public abstract void Activate(Ennemy iEnnemy);
-    //{
-        //iEnnemy.Hp -= damage;
-        //if (iEnnemy.Hp <= 0)
-        //{
-        //    iEnnemy.tile.ToDestroyFlag = true;
-        //}
-        //this.tile.ToDestroyFlag = true;
-        //BoardModel.instance.needDestroy = true;
-    //}
+
 }

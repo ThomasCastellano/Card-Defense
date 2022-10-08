@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class Ennemy
 {
     public int Hp;         // Health
@@ -35,6 +38,37 @@ public class Ennemy
     {
         if (_BlockTimer <= 0 && _MovementTimer > Speed)
         {
+            if (tile.Row >= BoardModel.SIZE_ROW - 1)
+            {
+                PlayerHand playerHand = GameManager.instance.playerHand;
+                List<bool> lIsCardPlayable = playerHand.lIsCardPlayable;
+
+                // On bloque la carte de la colonne correspondante à l'ennemie...
+                if (lIsCardPlayable[this.tile.Col])
+                {
+                    playerHand.lPlayerHand[this.tile.Col].dragable = false;
+                    playerHand.lPlayerHand[this.tile.Col].gameObject.GetComponent<Image>().color = Color.gray;
+                    playerHand.lIsCardPlayable[this.tile.Col] = false;
+                }
+                // ...sinon on bloque la première qui n'est pas bloquée
+                else
+                {
+                    for (int i = 0; i < lIsCardPlayable.Count; i++)
+                    {
+                        if (lIsCardPlayable[i])
+                        {
+                            playerHand.lPlayerHand[i].dragable = false;
+                            playerHand.lPlayerHand[i].gameObject.GetComponent<Image>().color = Color.gray;
+                            playerHand.lIsCardPlayable[i] = false;
+                            break;
+                        }
+                    }
+                }
+
+                tile.ToDestroyFlag = true;
+                BoardModel.instance.needDestroy = true;
+            }
+
             // Porté du mouvement random
             int Move = Random.Range(0, Movement + 1);
 
@@ -64,15 +98,6 @@ public class Ennemy
             }
 
         }
-
-        if (tile.Row >= BoardModel.SIZE_ROW - 1)
-        {
-            // TODO: Bloquer une carte pour le joueur
-
-            tile.ToDestroyFlag = true;
-            BoardModel.instance.needDestroy = true;
-        }
-
         _MovementTimer += Time.deltaTime;
         _BlockTimer -= Time.deltaTime;
         return false;

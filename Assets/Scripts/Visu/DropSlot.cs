@@ -28,36 +28,36 @@ public class DropSlot : MonoBehaviour, IDropHandler
 
             CardBehaviour card = eventData.pointerDrag.GetComponent<CardBehaviour>();
 
-            // Si la carte est une arme, on ne peut la jouer que sur une tile contenant un ennemi
-            if (card.itemModel.itemType == ItemType.WEAPON)
+            if (card.dragable)
             {
-                if (_boardModel.GetTile(_tileContainer.Row, _tileContainer.Col).tileType != TileType.ENNEMY)
+                // Si la carte est une arme, on ne peut la jouer que sur une tile contenant un ennemi
+                if (card.itemModel.itemType == ItemType.WEAPON)
                 {
-                    //eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = card.originalPosition;
-                    //card.transform.position = card.originalPosition;
-                    //card.transform.SetParent(_grid.transform);
-                    //card.transform.localPosition = Vector3.zero;
-                    //_gameManager.playerHand.Refresh();
-                    _gameManager.playerHand.gameObject.SetActive(false);
-                    _gameManager.playerHand.gameObject.SetActive(true);
-                    return;
+                    if (_boardModel.GetTile(_tileContainer.Row, _tileContainer.Col).tileType != TileType.ENNEMY)
+                    {
+                        _gameManager.playerHand.gameObject.SetActive(false);
+                        _gameManager.playerHand.gameObject.SetActive(true);
+                        return;
+                    }
                 }
+                // Les autres cartes ne peuvent pas être joués sur une case contenant un ennemi ou précédente carte
+                else
+                {
+                    if (_boardModel.GetTile(_tileContainer.Row, _tileContainer.Col).tileType != TileType.EMPTY)
+                    {
+                        _gameManager.playerHand.gameObject.SetActive(false);
+                        _gameManager.playerHand.gameObject.SetActive(true);
+                        return;
+                    }
+                }
+
+                _gameManager.PlayCard(card, _tileContainer.Row, _tileContainer.Col);
             }
-            // Les autres cartes ne peuvent pas être joués sur une case contenant un ennemi ou précédente carte
             else
             {
-                if (_boardModel.GetTile(_tileContainer.Row, _tileContainer.Col).tileType != TileType.EMPTY)
-                {
-                    //card.transform.SetParent(_grid.transform);
-                    //card.transform.localPosition = Vector3.zero;
-                    //_gameManager.playerHand.Refresh();
-                    _gameManager.playerHand.gameObject.SetActive(false);
-                    _gameManager.playerHand.gameObject.SetActive(true);
-                    return;
-                }
+                _gameManager.playerHand.gameObject.SetActive(false);
+                _gameManager.playerHand.gameObject.SetActive(true);
             }
-
-            _gameManager.PlayCard(card, _tileContainer.Row, _tileContainer.Col);
         }
     }
 }

@@ -87,12 +87,14 @@ public class TileContainer : MonoBehaviour
                     {
                         GameObject ennemyGO = Instantiate(rexPrefab, transform);
                         ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = itemModel.damage.ToString();
                         break;
                     }
                case AllyType.MERCENARY:
                     {
                         GameObject ennemyGO = Instantiate(mercenaryPrefab, transform);
                         ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = itemModel.damage.ToString();
                         break;
                     }
             }
