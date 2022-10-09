@@ -109,6 +109,8 @@
     <Compile Include="Assets\Valentin\StateManchineMenu\StateMachineMenu\StateMachineMenu.cs" />
     <Compile Include="Assets\Scripts\Logic\Ennemies\BoarEnnemy.cs" />
     <Compile Include="Assets\Scripts\Logic\Ennemies\SquirrelEnnemy.cs" />
+    <Compile Include="Assets\Scripts\Logic\Cards\Restore.cs" />
+    <Compile Include="Assets\Scripts\Logic\Cards\SpecialModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

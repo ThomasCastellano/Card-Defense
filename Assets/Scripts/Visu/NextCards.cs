@@ -118,7 +118,7 @@ public class NextCards : MonoBehaviour
             switch (type)
             {
                 case SpecialType.RESTORE:
-                    //item = new Restore();
+                    item = new Restore();
                     break;
             }
         }
