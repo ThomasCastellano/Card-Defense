@@ -23,11 +23,19 @@ public class StateMachineMenu : MonoBehaviour
 
     static public StateMachineMenu instance; //singleton
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        state = State.MAINMENU;
+        if (GameManager.isGameOver)
+        {
+            state = State.FIN;
+        }
+        //state = State.MAINMENU;
     }
 
     // Update is called once per frame
