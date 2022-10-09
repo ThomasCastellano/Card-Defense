@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static float _SpawnDelay = 5.0f;      // Temps entre l'ajout de deux ennemis
+    public static bool isGameOver = false;
     public const int MAX_NUMBER_OF_ENNEMIES = 12;
     public const float MAX_DIFFICULTY_MULTIPLIER = 4.0f;
+    public static float gameTimer = 0f;
 
     [SerializeField] private TextMeshProUGUI gameTimerGUI;
 
@@ -22,7 +24,6 @@ public class GameManager : MonoBehaviour
 
     private BoardModel _boardModel;
 
-    private float _gameTimer = 0f;
     private float _SpawnTimer = 0f;
     private float _DifficultyTimer = 0f;
     private int _NbBlockedCards = 0;
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
         StateMachine = StateMachineGame.instance;
         _boardModel = new BoardModel();
         playerHand = PlayerHand.instance;
-        _gameTimer = 0f;
+        gameTimer = 0f;
     }
 
     // ----------------------------------------------
@@ -52,10 +53,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Update game timers
-        if (_gameTimer < 9999f)
+        if (gameTimerGUI != null && gameTimer < 9999f)
         {
-            _gameTimer += Time.deltaTime;
-            gameTimerGUI.text = _gameTimer.ToString("0.00") + " s";
+            gameTimer += Time.deltaTime;
+            gameTimerGUI.text = gameTimer.ToString("0.00") + " s";
         }
 
         // Increase difficulty every minute
@@ -116,8 +117,9 @@ public class GameManager : MonoBehaviour
         {
             // GAME OVER YEAAAAH
             //Debug.Log("GAME OVER YEAAAAH");
-            StateMachine.SetState(State.FIN);
+            isGameOver = true;
             StateMachine.LoadScene("MainMenu");
+            //StateMachineMenu.instance.SetState(State.FIN);
         }
     }
 
