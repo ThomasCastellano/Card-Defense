@@ -82,10 +82,12 @@
     <Compile Include="Assets\Scripts\Logic\Cards\Spear.cs" />
     <Compile Include="Assets\Scripts\Visu\Cards Behaviour\ScarecrowBehaviour.cs" />
     <Compile Include="Assets\Paul\Script\MonsterSpawner.cs" />
+    <Compile Include="Assets\Scripts\Visu\GameOver.cs" />
     <Compile Include="Assets\Scripts\Logic\BoardModel.cs" />
     <Compile Include="Assets\Scripts\Logic\Obstacle.cs" />
     <Compile Include="Assets\Scripts\Visu\Cards Behaviour\NettrapBehaviour.cs" />
     <Compile Include="Assets\Scripts\Logic\Ennemies\SquirrelEnnemy.cs" />
+    <Compile Include="Assets\Scripts\Visu\HighScoreTableV2.cs" />
     <Compile Include="Assets\Scripts\Visu\Ennemies Behavior\EnnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\Visu\TileContainer.cs" />
     <Compile Include="Assets\Valentin\StateManchineMenu\StateMachineMenu\StateMachineMenu.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Assets\Scripts\Visu\DropSlot.cs" />
     <Compile Include="Assets\Paul\Script\GameVisuManager.cs" />
     <Compile Include="Assets\Scripts\Visu\Cards Behaviour\SpearBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Visu\HighscoreTable.cs" />
     <Compile Include="Assets\Scripts\Logic\PlayerHandModel.cs" />
     <Compile Include="Assets\Scripts\Visu\TMPHp.cs" />
     <Compile Include="Assets\Scripts\Logic\Ennemies\BearEnnemy.cs" />
@@ -111,9 +114,6 @@
     <Compile Include="Assets\Scripts\Logic\ItemTile.cs" />
     <Compile Include="Assets\Scripts\Logic\Cards\BearTrap.cs" />
     <Compile Include="Assets\Scripts\Logic\Ennemies\BoarEnnemy.cs" />
-    <Compile Include="Assets\Scripts\Visu\HighscoreTable.cs" />
-    <Compile Include="Assets\Scripts\Visu\HighScoreTableV2.cs" />
-    <Compile Include="Assets\Scripts\Visu\GameOver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
