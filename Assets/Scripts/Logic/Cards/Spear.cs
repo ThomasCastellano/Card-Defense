@@ -1,7 +1,7 @@
 public class Spear : WeaponModel
 {
     const int DAMAGE = 3;
-    public Spear() : base("Spear", DAMAGE, WeaponType.SPEAR)
+    public Spear() : base(DAMAGE, WeaponType.SPEAR)
     {
 
     }

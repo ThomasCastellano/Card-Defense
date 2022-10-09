@@ -14,12 +14,13 @@ public class BoardModel
     // Tableau 2D contenant une liste des Tiles à chaque emplacement
     // TODO : Les Tiles peuvent se superposés (ex: un piège et un ennemi)
     public static BoardModel instance;
-    public static Tile[,] _Board = new Tile[SIZE_ROW, SIZE_COL];    
-    public static List<Ennemy> _lEnnemies = new List<Ennemy>();          // Liste des references sur les ennemis en jeu
-    public static List<TrapTile> _lTraps = new List<TrapTile>();          // Liste des references sur les pièges en jeu
-    public static bool _NeedRefresh = false;    // Pour refresh la visu
-    public static bool needDestroy = false;
-    //public static float _CycleTime = 3.0f;      // Temps entre l'ajout de deux ennemis
+
+    public Tile[,] _Board = new Tile[SIZE_ROW, SIZE_COL];    
+    public List<EnnemyTile> _lEnnemyTile = new List<EnnemyTile>();          // Liste des references sur les ennemis en jeu
+    public List<ItemTile> _lItemTile = new List<ItemTile>();          // Liste des references sur les pièges en jeu
+    public bool _NeedRefresh = false;    // Pour refresh la visu
+    public bool needDestroy = false;
+    //public float _CycleTime = 3.0f;      // Temps entre l'ajout de deux ennemis
 
     private float _TimerStart = 0.0f;
 
@@ -47,15 +48,6 @@ public class BoardModel
     }
 
     // ----------------------------------------------
-    // UpdateBoard
-    // ----------------------------------------------
-    public void UpdateBoard()
-    {
-        
-
-    }
-
-    // ----------------------------------------------
     // RefreshDisplay
     // ----------------------------------------------
     public void RefreshDisplay()
@@ -65,12 +57,12 @@ public class BoardModel
         {
             for (int j = 0; j < SIZE_COL; j++)
             {
-                string sTileType = _Board[i, j].GetType().Name;
-                if (sTileType == "Tile")
+                TileType tileType = _Board[i, j].tileType;
+                if (tileType == TileType.EMPTY)
                     str.Append(" -");
-                if (sTileType == "Ennemy")
+                if (tileType == TileType.ENNEMY)
                     str.Append(" x");
-                if (sTileType == "Trap")
+                if (tileType == TileType.TRAP)
                     str.Append(" o");
             }
             str.Append("\n");
@@ -85,7 +77,7 @@ public class BoardModel
     // Supprime les Tiles marquées avec le flag _ToDestroyFlag
     public void DestroyFlaggedTiles()
     {
-        foreach (Ennemy ennemy in _lEnnemies)
+        foreach (EnnemyTile ennemy in _lEnnemyTile)
         {
             if (ennemy.ToDestroyFlag)
             {
@@ -94,18 +86,18 @@ public class BoardModel
                 _Board[RowPos, ColPos] = new Tile(RowPos, ColPos);
             }
         }
-        _lEnnemies.RemoveAll(x => x.ToDestroyFlag);
+        _lEnnemyTile.RemoveAll(x => x.ToDestroyFlag);
 
-        foreach (TrapTile trap in _lTraps)
+        foreach (ItemTile itemTile in _lItemTile)
         {
-            if (trap.ToDestroyFlag)
+            if (itemTile.ToDestroyFlag)
             {
-                int RowPos = trap.Row;
-                int ColPos = trap.Col;
+                int RowPos = itemTile.Row;
+                int ColPos = itemTile.Col;
                 _Board[RowPos, ColPos] = new Tile(RowPos, ColPos);
             }
         }
-        _lTraps.RemoveAll(x => x.ToDestroyFlag);
+        _lItemTile.RemoveAll(x => x.ToDestroyFlag);
 
         needDestroy = false;
     }
@@ -117,59 +109,120 @@ public class BoardModel
     {
         int nCol = Random.Range(0,4);
         // Si la case est prise par un ennemi, on ne rajoute pas d'ennemis dessus
-        if (_Board[0, nCol].GetType().Name == "Ennemy") return;
+        if (_Board[0, nCol].tileType == TileType.ENNEMY) return;
 
-        Ennemy newEnnemy = new Ennemy(0, nCol, 1, 3, 1, EnnemyType.BEAR);
-        _Board[0, nCol] = newEnnemy;
-        _lEnnemies.Add(newEnnemy);
-        _NeedRefresh = true;
-        _TimerStart = Time.time;
+        // Random ennemy
+        EnnemyType ennemyType = (EnnemyType)Random.Range(0, 4);
+
+        Ennemy ennemyModel = null;
+        EnnemyTile ennemyTile = null;
+
+        switch (ennemyType)
+        {
+            case EnnemyType.BEAR:
+                {
+                    ennemyModel = new BearEnnemy();
+                    ennemyTile = new EnnemyTile(0, nCol, TileType.ENNEMY, ennemyModel, ennemyModel.ennemyPrefab);
+                    break;
+                }
+            case EnnemyType.GNOME:
+                {
+                    ennemyModel = new GnomeEnnemy();
+                    ennemyTile = new EnnemyTile(0, nCol, TileType.ENNEMY, ennemyModel, ennemyModel.ennemyPrefab);
+                    break;
+                }
+            case EnnemyType.BOAR:
+                {
+                    ennemyModel = new BoarEnnemy();
+                    ennemyTile = new EnnemyTile(0, nCol, TileType.ENNEMY, ennemyModel, ennemyModel.ennemyPrefab);
+                    break;
+                }
+            case EnnemyType.SQUIRREL:
+                {
+                    ennemyModel = new SquirrelEnnemy();
+                    ennemyTile = new EnnemyTile(0, nCol, TileType.ENNEMY, ennemyModel, ennemyModel.ennemyPrefab);
+                    break;
+                }
+        }
+
+        if (ennemyModel != null)
+        {
+            ennemyModel.tile = ennemyTile;
+            //_Board[0, nCol] = newEnnemy.CreateTile(0, nCol);
+            //ennemyTile = new EnnemyTile(0, nCol, TileType.ENNEMY, newEnnemy, newEnnemy.tile.objectPrefab);
+            //_Board[0, nCol] = new EnnemyTile(0, nCol, TileType.ENNEMY, newEnnemy, newEnnemy.tile.objectPrefab);
+            _Board[0, nCol] = ennemyTile;
+            _lEnnemyTile.Add(ennemyTile);
+            _NeedRefresh = true;
+            _TimerStart = Time.time;
+        }
     }
 
-    // ----------------------------------------------
-    // AddTrapFromCard
-    // ----------------------------------------------
-    // Fait le lien entre une carte piège et l'objet piège
-    // lorsque la carte est jouée
-    public void AddTrapFromCard(TrapModel iTrapCard, int iRow, int iCol)
-    {
-        // Crée un piège du même type que la carte jouée
-        TrapTile trap = new TrapTile(iRow, iCol, iTrapCard.damage, iTrapCard.trapType);
-        _Board[iRow, iCol] = trap;
-        _lTraps.Add(trap);
-        _NeedRefresh = true;
-    }
-
-    // ----------------------------------------------
-    // MoveEnnemies
-    // ----------------------------------------------
     public void MoveEnnemies()
     {
-        foreach (Ennemy ennemy in _lEnnemies)
+        foreach (EnnemyTile ennemyTile in _lEnnemyTile)
         {
+            Ennemy ennemy = ennemyTile.ennemyModel;
             if (ennemy == null)
             {
-                Debug.LogError("Null Ennemy");
+                Debug.LogError("Null Ennemy Model");
                 return;
             }
 
-            int OldEnnemyRowPos = ennemy.Row;
-            int OldEnnemyColPos = ennemy.Col;
+            int OldEnnemyRowPos = ennemyTile.Row;
+            int OldEnnemyColPos = ennemyTile.Col;
 
             // Déplace l'ennemi et vérifie qu'il n'a pas été bloqué par un autre ennemi
             if (ennemy.MoveDown() == true)
             {
-                int NewEnnemyRowPos = ennemy.Row;
-                int NewEnnemyColPos = ennemy.Col;
+                int NewEnnemyRowPos = ennemyTile.Row;
+                int NewEnnemyColPos = ennemyTile.Col;
 
                 // Si l'ennemi vient de se placer sur une Tile piege, il l'active et la détruit
-                string sOldTileType = _Board[NewEnnemyRowPos, NewEnnemyColPos].GetType().Name;
-                if (sOldTileType == "Trap")
+                Tile oldTile = _Board[NewEnnemyRowPos, NewEnnemyColPos];
+                if (oldTile.tileType == TileType.TRAP)
                 {
-                    TrapTile TrapTile = (TrapTile)_Board[NewEnnemyRowPos, NewEnnemyColPos];
-                    TrapTile.Activate(ennemy);
-                    TrapTile.ToDestroyFlag = true;
-                    _Board[OldEnnemyRowPos, OldEnnemyColPos] = new Tile(OldEnnemyRowPos, OldEnnemyColPos);
+                    TrapModel trapModel = (TrapModel)((ItemTile)oldTile).itemModel;
+                    trapModel.Activate(ennemy);
+                    if (trapModel.trapType == TrapType.NET_TRAP)
+                    {
+                        _Board[NewEnnemyRowPos, NewEnnemyColPos] = new Tile(NewEnnemyRowPos, NewEnnemyColPos);
+                        // On laisse l'ennemi sur sa tile initiale
+                        ennemy.tile.Row = OldEnnemyRowPos;
+                        ennemy.tile.Col = OldEnnemyColPos;
+                        //NewEnnemyRowPos = OldEnnemyRowPos;
+                        _NeedRefresh = true;
+                        return;
+                    }
+                    else
+                    {
+                        _Board[OldEnnemyRowPos, OldEnnemyColPos] = new Tile(OldEnnemyRowPos, OldEnnemyColPos);
+                    }
+                }
+                else if (oldTile.tileType == TileType.DIVERSION)
+                {
+                    DiversionModel diversionModel = (DiversionModel)((ItemTile)oldTile).itemModel;
+                    diversionModel.Activate(ennemy);
+                    _Board[NewEnnemyRowPos, NewEnnemyColPos] = new Tile(NewEnnemyRowPos, NewEnnemyColPos);
+                    // On laisse l'ennemi sur sa tile initiale
+                    ennemy.tile.Row = OldEnnemyRowPos;
+                    ennemy.tile.Col = OldEnnemyColPos;
+                    //NewEnnemyRowPos = OldEnnemyRowPos;
+                    _NeedRefresh = true;
+                    return;
+                }
+                else if (oldTile.tileType == TileType.ALLY)
+                {
+                    AllyModel allyModel = (AllyModel)((ItemTile)oldTile).itemModel;
+                    allyModel.Activate(ennemy);
+                    if (ennemy.Hp <= 0)
+                    {
+                        _Board[OldEnnemyRowPos, OldEnnemyColPos] = new Tile(OldEnnemyRowPos, OldEnnemyRowPos);
+                    }
+                    ennemy.tile.Row = OldEnnemyRowPos;
+                    ennemy.tile.Col = OldEnnemyColPos;
+                    _NeedRefresh = true;
+                    return;
                 }
                 else
                 {
@@ -178,7 +231,7 @@ public class BoardModel
                 }
 
                 // Move la Tile de l'ennemi sur le board
-                _Board[NewEnnemyRowPos, NewEnnemyColPos] = ennemy;
+                _Board[NewEnnemyRowPos, NewEnnemyColPos] = ennemy.tile;
                 _NeedRefresh = true;
             }
         }

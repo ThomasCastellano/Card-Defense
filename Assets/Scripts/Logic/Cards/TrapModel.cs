@@ -7,14 +7,15 @@ public abstract class TrapModel : ItemModel
     public int damage;
     public TrapType trapType;
 
-    protected TrapModel(string iName, int iDamage, TrapType iTrapType) : base(iName, CardType.TRAP)
+    protected TrapModel(int iDamage, TrapType iTrapType) : base(ItemType.TRAP)
     {
         damage = iDamage;
         trapType = iTrapType;
     }
 
-    public override void OnPlayed(int iRow, int iCol)
-    {
-        
-    }
+    // ----------------------------------------------
+    // Activate
+    // ----------------------------------------------
+    public abstract void Activate(Ennemy iEnnemy);
+
 }

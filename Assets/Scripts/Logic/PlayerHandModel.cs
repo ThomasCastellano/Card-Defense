@@ -1,107 +1,85 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class PlayerHandModel
-{
-    public static PlayerHandModel instance;
+//public class PlayerHandModel
+//{
+//    public const int SIZE_HAND = 4;
 
-    public List<ItemModel> lPlayerHand = new List<ItemModel>(new ItemModel[SIZE_HAND]);        // Main du joueur
-    public List<ItemModel> lNextCards = new List<ItemModel>(new ItemModel[SIZE_NEXT_CARDS]);       // Deux prochaines cartes
+//    public static PlayerHandModel instance;
+//    public List<CardBehaviour> lPlayerHand = new List<CardBehaviour>(new CardBehaviour[SIZE_HAND]);        // Main du joueur
+//    public bool needRefresh = false;
 
-    public const int SIZE_HAND = 4;
-    public const int SIZE_NEXT_CARDS = 2;
+//    private NextCards _nextCards = NextCards.instance;
 
-    public bool needRefresh = false;
+//    // ----------------------------------------------
+//    // Constructor
+//    // ----------------------------------------------
+//    public PlayerHandModel()
+//    {
+//        instance = this;
 
-    // ----------------------------------------------
-    // Constructor
-    // ----------------------------------------------
-    public PlayerHandModel()
-    {
-        instance = this;
-        BuildHand();
-        BuildNextCards();
-    }
+//        for (int i = 0; i < SIZE_HAND; i++)
+//        {
+//            DrawCard(i);
+//        }
 
-    // ----------------------------------------------
-    // BuildHand
-    // ----------------------------------------------
-    public void BuildHand()
-    {
-        for (int i = 0; i < SIZE_HAND; i++)
-        {
-            lPlayerHand[i] = CreateRandomCard();
-        }
-        needRefresh = true;
-    }
+//        //needRefresh = true;
+//    }
 
-    // ----------------------------------------------
-    // BuildNextCards
-    // ----------------------------------------------
-    public void BuildNextCards()
-    {
-        for (int i = 0; i < SIZE_NEXT_CARDS; i++)
-        {
-            lNextCards[i] = CreateRandomCard();
-        }
-    }
+//    // ----------------------------------------------
+//    // DrawCard
+//    // ----------------------------------------------
+//    public void DrawCard(int index)
+//    {
+//        if (index < lPlayerHand.Count)
+//        {
+//            lPlayerHand[index] = _nextCards.lNextCards[0];
+//            _nextCards.Refresh();
+//        }
+//    }
 
-    // ----------------------------------------------
-    // CreateRandomCard
-    // ----------------------------------------------
-    public ItemModel CreateRandomCard()
-    {
-        ItemModel item = null;
+//    // ----------------------------------------------
+//    // BuildHand
+//    // ----------------------------------------------
+//    public void BuildHand()
+//    {
+//        for (int i = 0; i < SIZE_HAND; i++)
+//        {
+//            //lPlayerHand[i] = CreateRandomCard();
+//        }
+//        needRefresh = true;
+//    }
 
-        // Random card type
-        CardType cardType = (CardType)Random.Range(0, 2);
 
-        if (cardType == CardType.WEAPON)
-        {
-            WeaponType type = (WeaponType)Random.Range(0, 2);
-            switch (type)
-            {
-                case WeaponType.SPEAR:
-                    item = new Spear();
-                    break;
-                case WeaponType.TORCH:
-                    item = new Torch();
-                    break;
-            }
-        }
-        else if (cardType == CardType.TRAP)
-        {
-            TrapType type = (TrapType)Random.Range(0, 2);
-            switch (type)
-            {
-                case TrapType.BEAR_TRAP:
-                    item = new BearTrap();
-                    break;
-                case TrapType.NET_TRAP:
-                    item = new NetTrap();
-                    break;
-            }
-        }
+//    // ----------------------------------------------
+//    // OnCardPlayed
+//    // ----------------------------------------------
+//    // When a card is played from UI this method is called
+//    public void OnCardPlayed(ItemModel cardItemModel)
+//    {
+//        //lPlayerHand.Remove(cardItemModel);
+//        //int index = -1;
+//        int index = lPlayerHand.IndexOf(cardItemModel);
+//        Debug.Log(cardItemModel.GetHashCode());
+//        foreach (ItemModel i in lPlayerHand)
+//        {
+//            Debug.Log(i.GetHashCode());
+//        }
+//        Debug.Log(lPlayerHand.IndexOf(cardItemModel));
+//        Debug.Log(lPlayerHand.Contains(cardItemModel));
+//        //for (int i = 0; i < lPlayerHand.Count; i++)
+//        //{
+//        //    if (lPlayerHand[i].GetHashCode() == cardItemModel.GetHashCode())
+//        //    {
+//        //        index = i;
+//        //    }
+//        //}
+//        if (index > -1)
+//        {
+//            lPlayerHand.Remove(cardItemModel);
+//            //AddNextCardToHand(index);
+//        }
+//    }
 
-        return item;
-    }
-
-    public void AddNextCardToHand(int index)
-    {
-        lPlayerHand[index] = lNextCards[0];
-        lNextCards[0] = lNextCards[1];
-        lNextCards[1] = CreateRandomCard();
-        needRefresh = true;
-    }
-
-    // ----------------------------------------------
-    // OnCardPlayed
-    // ----------------------------------------------
-    // When a card is played from UI this method is called
-    public void OnCardPlayed(ItemModel card, int index)
-    {
-
-    }
-
-}
+//}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +9,21 @@ public class TileContainer : MonoBehaviour
 {
     public int Row;
     public int Col;
-    public bool isfull;
+    //public bool isfull;
 
     public BoardModel boardModel;
-    //public Image backgroundImage;
 
     public GameObject bearPrefab;
+    public GameObject gnomePrefab;
+    public GameObject boarPrefab;
+    public GameObject squirrelPrefab;
+
+    public GameObject bearTrapPrefab;
+    public GameObject netTrapPrefab;
+    public GameObject snowmanPrefab;
+    public GameObject scarecrowPrefab;
+    public GameObject rexPrefab;
+    public GameObject mercenaryPrefab;
 
     private void Start()
     {
@@ -24,53 +34,105 @@ public class TileContainer : MonoBehaviour
     {
         Tile tile = boardModel.GetTile(Row, Col);
 
-        if (tile is Ennemy ennemy)
+        // Reset la tile
+        foreach (Transform child in transform)
         {
-            switch(ennemy.type)
+            Destroy(child.gameObject);
+        }
+
+        if (tile.tileType == TileType.ENNEMY)
+        {
+            Ennemy ennemy = ((EnnemyTile)tile).ennemyModel;
+            switch (ennemy.ennemyType)
             {
                 case EnnemyType.BEAR:
                     {
                         GameObject ennemyGO = Instantiate(bearPrefab, transform);
                         ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = ennemy.Hp.ToString();
                         break;
                     }
-                default:
+                case EnnemyType.GNOME:
                     {
-                        // on detruit la carte inutile
-                        foreach(Transform child in transform)
-                        {
-                            Destroy(child);
-                        }
+                        GameObject ennemyGO = Instantiate(gnomePrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = ennemy.Hp.ToString();
+                        break;
+                    }
+                case EnnemyType.BOAR:
+                    {
+                        GameObject ennemyGO = Instantiate(boarPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = ennemy.Hp.ToString();
+                        break;
+                    }
+                case EnnemyType.SQUIRREL:
+                    {
+                        GameObject ennemyGO = Instantiate(squirrelPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = ennemy.Hp.ToString();
                         break;
                     }
             }
         }
-        else if (tile is TrapTile trap)
+        else if (tile.tileType == TileType.TRAP)
         {
-
-        }
-        else
-        {
-            // Reset la tile
-            foreach (Transform child in transform)
+            TrapModel itemModel = (TrapModel)((ItemTile)tile).itemModel;
+            switch (itemModel.trapType)
             {
-                Destroy(child.gameObject);
+                case TrapType.BEAR_TRAP:
+                    {
+                        GameObject ennemyGO = Instantiate(bearTrapPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+                case TrapType.NET_TRAP:
+                    {
+                        GameObject ennemyGO = Instantiate(netTrapPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+            }
+        }
+        else if (tile.tileType == TileType.ALLY)
+        {
+            AllyModel itemModel = (AllyModel)((ItemTile)tile).itemModel;
+            switch (itemModel.allyType)
+            {
+                case AllyType.REX_DOG:
+                    {
+                        GameObject ennemyGO = Instantiate(rexPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = itemModel.damage.ToString();
+                        break;
+                    }
+               case AllyType.MERCENARY:
+                    {
+                        GameObject ennemyGO = Instantiate(mercenaryPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = itemModel.damage.ToString();
+                        break;
+                    }
+            }
+        }
+        else if (tile.tileType == TileType.DIVERSION)
+        {
+            DiversionModel itemModel = (DiversionModel)((ItemTile)tile).itemModel;
+            switch (itemModel.diversionType)
+            {
+                case DiversionType.SNOWMAN:
+                    {
+                        GameObject ennemyGO = Instantiate(snowmanPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+                case DiversionType.SCARECROW:
+                    {
+                        GameObject ennemyGO = Instantiate(scarecrowPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        break;
+                    }
             }
         }
     }
-
-   public void OnTriggerEnter2D(Collider2D collision)
-   {
-         //if (gameManager.draggingObject !=null && isfull == false)
-        {
-            //gameManager.currentContainer = this.gameObject;
-            //backgroundImage.enabled = true;
-        }
-   }
-
-   public void OnTriggerExit2D(Collider2D collision)
-   {
-        //gameManager.currentContainer = null;
-        //backgroundImage.enabled = false;
-   }
 }

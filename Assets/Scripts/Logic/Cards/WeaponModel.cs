@@ -5,14 +5,23 @@ public abstract class WeaponModel : ItemModel
     public int damage;
     public WeaponType weaponType;
 
-    protected WeaponModel(string iName, int iDamage, WeaponType iWeaponType) : base(iName, CardType.WEAPON)
+    protected WeaponModel(int iDamage, WeaponType iWeaponType) : base(ItemType.WEAPON)
     {
         damage = iDamage;
         weaponType = iWeaponType;
     }
 
-    public override void OnPlayed(int iRow, int iCol)
+    // ----------------------------------------------
+    // Activate
+    // ----------------------------------------------
+    public void Activate(Ennemy iEnnemy)
     {
-
+        iEnnemy.Hp -= damage;
+        if (iEnnemy.Hp <= 0)
+        {
+            iEnnemy.tile.ToDestroyFlag = true;
+        }
+        //this.tile.ToDestroyFlag = true;
+        BoardModel.instance.needDestroy = true;
     }
 }

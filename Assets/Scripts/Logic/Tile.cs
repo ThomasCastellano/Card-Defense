@@ -1,15 +1,19 @@
+using UnityEngine;
+
 public class Tile
 {
     public int Row;     // Position dans le tableau
     public int Col;
-
-    public bool IsVisible;
     public bool ToDestroyFlag = false;     // Indique si le GameObject lié à cette Tile doit être détruit
+    public TileType tileType;
 
-    public Tile(int iRow, int iCol, bool iVisible = true)
+    public GameObject objectPrefab;
+
+    public Tile(int iRow, int iCol, TileType tileType = TileType.EMPTY, GameObject objectPrefab = null)
     {
         Row = iRow;
         Col = iCol;
-        IsVisible = iVisible;
+        this.tileType = tileType;
+        this.objectPrefab = objectPrefab;
     }
 }

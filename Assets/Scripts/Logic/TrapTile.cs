@@ -1,3 +1,4 @@
+/*
 public class TrapTile : Tile
 {
     public TrapType trapType;
@@ -8,7 +9,7 @@ public class TrapTile : Tile
     // ----------------------------------------------
     // Constructor
     // ----------------------------------------------
-    public TrapTile(int iRow, int iCol, int iDamage, TrapType iTrapType, bool iVisible = true) : base(iRow, iCol, iVisible)
+    public TrapTile(int iRow, int iCol, int iDamage, TrapType iTrapType, bool iVisible = true) : base(iRow, iCol)
     {
         Damage = iDamage;
         trapType = iTrapType;
@@ -22,9 +23,10 @@ public class TrapTile : Tile
         iEnnemy.Hp -= Damage;
         if (iEnnemy.Hp <= 0)
         {
-            iEnnemy.ToDestroyFlag = true;
+            iEnnemy.tile.ToDestroyFlag = true;
         }
         this.ToDestroyFlag = true;
         BoardModel.needDestroy = true;
     }
 }
+*/

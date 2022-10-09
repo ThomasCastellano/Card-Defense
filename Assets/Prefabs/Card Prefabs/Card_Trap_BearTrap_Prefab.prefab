@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1830027316477515449}
   - component: {fileID: 6096880771672134117}
   - component: {fileID: 1214117397703518342}
+  - component: {fileID: 2573378114678236702}
   m_Layer: 5
   m_Name: Card_Trap_BearTrap_Prefab
   m_TagString: Untagged
@@ -105,6 +106,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471278ca073d31340aa0ec8bb09e1df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2573378114678236702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125186883433440172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568d8551e3e46664cb3ed8378c97acb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardObject: {fileID: 5112812618197637475, guid: 7faa7b5a7d5f2ae41935e8ea95a364bc, type: 3}
 --- !u!1 &1245166810752544697
 GameObject:
   m_ObjectHideFlags: 0

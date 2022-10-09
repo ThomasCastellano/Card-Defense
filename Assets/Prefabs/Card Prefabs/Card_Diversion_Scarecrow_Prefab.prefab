@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1830027316477515449}
   - component: {fileID: 2603833813722840893}
   - component: {fileID: -909298962654840972}
+  - component: {fileID: 5813097577144639009}
   m_Layer: 5
   m_Name: Card_Diversion_Scarecrow_Prefab
   m_TagString: Untagged
@@ -105,6 +106,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471278ca073d31340aa0ec8bb09e1df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5813097577144639009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125186883433440172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d76f4a5a777e0449ba6aa9e22c15ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardObject: {fileID: 5112812618197637475, guid: 4e370fd7ca00b7745be35bbd4789223f, type: 3}
 --- !u!1 &1245166810752544697
 GameObject:
   m_ObjectHideFlags: 0
