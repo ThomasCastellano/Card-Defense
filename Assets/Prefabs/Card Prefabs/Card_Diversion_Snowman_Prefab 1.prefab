@@ -119,6 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardObject: {fileID: 5112812618197637475, guid: 35eadfd60d221c14ea0d6cc3906da3ab, type: 3}
+  originalAnchoredPosition: {x: 0, y: 0, z: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
+  dragable: 1
 --- !u!1 &1245166810752544697
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attire un ennemi.
+  m_text: Bloque et ralenti un ennemi.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}

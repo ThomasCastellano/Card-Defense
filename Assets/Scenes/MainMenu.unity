@@ -265,7 +265,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &27283961
 GameObject:
@@ -628,6 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 665874919}
+  scoreboard: {fileID: 594912010}
 --- !u!1 &70424817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1097,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &200453469
 GameObject:
@@ -1521,7 +1522,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Meilleurs Scores
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1552,7 +1553,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 4
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1585,7 +1586,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &260307179
@@ -1656,8 +1657,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
+  m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2031,6 +2032,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card_Ally_Mercenary_Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 8333892388732444094, guid: 015a6673a00706841b15d9f67429a3c5, type: 3}
+      propertyPath: dragable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 015a6673a00706841b15d9f67429a3c5, type: 3}
 --- !u!224 &414735993 stripped
@@ -2211,8 +2216,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CREDITS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
+  m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2242,7 +2247,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 4
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2423,7 +2428,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2611,8 +2616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26c6ae768e96164587f8b6ed07fcc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryContainer: {fileID: 0}
-  entryTemplate: {fileID: 0}
 --- !u!1 &551835200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,8 +3070,8 @@ MonoBehaviour:
 
     Paul MAURIN'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
+  m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3409,7 +3412,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ": Inflige quelques d\xE9g\xE2ts \xE0 un ennemi."
+  m_text: "Inflige quelques d\xE9g\xE2ts \xE0 un ennemi."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
@@ -3546,8 +3549,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100.92 s
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
+  m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3610,7 +3613,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &665874920
@@ -3792,6 +3795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card_Diversion_Snowman_Prefab 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4313749103973281528, guid: ae0eab7767f76ed45b0dab4f6809e198, type: 3}
+      propertyPath: dragable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae0eab7767f76ed45b0dab4f6809e198, type: 3}
 --- !u!224 &714788382 stripped
@@ -3857,7 +3864,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ': Attire un ennemi.'
+  m_text: "Ralenti l'avanc\xE9 d'un ennemi en lui barrant la route."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
@@ -4203,8 +4210,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: GAME OVER
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
+  m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4837,7 +4844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1044060892
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5033,6 +5040,10 @@ PrefabInstance:
     - target: {fileID: 1125186883433440172, guid: 302b042a21c50c94ea03abd7617d9397, type: 3}
       propertyPath: m_Name
       value: Card_Weapon_Torch_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208126581025385552, guid: 302b042a21c50c94ea03abd7617d9397, type: 3}
+      propertyPath: dragable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 302b042a21c50c94ea03abd7617d9397, type: 3}
@@ -5503,7 +5514,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1207447349
 GameObject:
@@ -5520,7 +5531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1207447350
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5569,7 +5580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1256431322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5744,8 +5755,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "R\xE9solution"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
+  m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5984,10 +5995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047a09886b8a09e41a6843198eb7e65d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryContainer: {fileID: 0}
-  entryTemplate: {fileID: 0}
-  highscoreEntryList: []
-  highscoreEntryTransformList: []
 --- !u!1 &1315671595
 GameObject:
   m_ObjectHideFlags: 0
@@ -6694,7 +6701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ': Immobilise un ennemi.'
+  m_text: "Immobilise un ennemi ou lui inflige des d\xE9g\xE2ts."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
@@ -6985,7 +6992,7 @@ RectTransform:
   - {fileID: 1207447350}
   - {fileID: 64231169}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7043,8 +7050,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 375.30005}
-  m_SizeDelta: {x: 428.676, y: 108.2899}
+  m_AnchoredPosition: {x: 0, y: 420}
+  m_SizeDelta: {x: 1000, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1476093095
 MonoBehaviour:
@@ -7066,10 +7073,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TITRE JEU
+  m_text: Cards & Monsters
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
+  m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7093,15 +7100,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -7237,6 +7244,10 @@ PrefabInstance:
     - target: {fileID: 1125186883433440172, guid: 5080377e8d5ecff43aaae82fb85e9648, type: 3}
       propertyPath: m_Name
       value: Card_Trap_BearTrap_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573378114678236702, guid: 5080377e8d5ecff43aaae82fb85e9648, type: 3}
+      propertyPath: dragable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5080377e8d5ecff43aaae82fb85e9648, type: 3}
@@ -7817,7 +7828,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Utilisez les cartes pr\xE9sentent dans votre main pour venir \xE0 bout
-    des vagues d'ennemis."
+    des vagues d'ennemis et survivre le plus longtemps possible."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
@@ -7970,57 +7981,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704564351}
   m_CullTransparentMesh: 1
---- !u!1 &1727938188
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1727938190}
-  - component: {fileID: 1727938189}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1727938189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727938188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c90b35b81b869ea4887dc12f21a8f179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameTimerGUI: {fileID: 0}
-  StateMachine: {fileID: 0}
-  playGrid: {fileID: 0}
-  playerHand: {fileID: 0}
-  difficultyMultiplier: 1
-  tileContainerPrefab: {fileID: 0}
-  tileContainers: []
---- !u!4 &1727938190
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727938188}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1737234412
 GameObject:
   m_ObjectHideFlags: 0
@@ -8948,7 +8908,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ": Inflige de puissants d\xE9g\xE2ts \xE0 un ennemi."
+  m_text: "Inflige de puissants d\xE9g\xE2ts aux ennemis. Reste sur le terrain jusqu'\xE0
+    sa mort."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
@@ -9269,7 +9230,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9a7954226404f8440bdfabb0f65cea21, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1fb99691ae199c742aef8c74e9517269, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -9368,7 +9329,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898991023
 GameObject:
@@ -10119,8 +10080,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "PARAM\xC8TRES"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
+  m_sharedMaterial: {fileID: 1116031297395741180, guid: ea46528a54721444d99d8d0b73b1bc08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10150,7 +10111,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 4
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -10227,8 +10188,8 @@ RectTransform:
   m_Father: {fileID: 1473571248}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

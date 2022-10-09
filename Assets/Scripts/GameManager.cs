@@ -97,11 +97,12 @@ public class GameManager : MonoBehaviour
         // Refresh displayed objects
         if (_boardModel._NeedRefresh)
         {
-            _boardModel.RefreshDisplay();
+            //_boardModel.RefreshDisplay();
             foreach(TileContainer tile in tileContainers)
             {
                 tile.Refresh();
             }
+            _boardModel._NeedRefresh = false;
         }
 
         // Check if all cards are blocked for game over
