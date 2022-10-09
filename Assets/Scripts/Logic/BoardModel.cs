@@ -112,7 +112,7 @@ public class BoardModel
         if (_Board[0, nCol].tileType == TileType.ENNEMY) return;
 
         // Random ennemy
-        EnnemyType ennemyType = (EnnemyType)Random.Range(0, 2);
+        EnnemyType ennemyType = (EnnemyType)Random.Range(0, 4);
 
         Ennemy ennemyModel = null;
         EnnemyTile ennemyTile = null;
@@ -128,6 +128,18 @@ public class BoardModel
             case EnnemyType.GNOME:
                 {
                     ennemyModel = new GnomeEnnemy();
+                    ennemyTile = new EnnemyTile(0, nCol, TileType.ENNEMY, ennemyModel, ennemyModel.ennemyPrefab);
+                    break;
+                }
+            case EnnemyType.BOAR:
+                {
+                    ennemyModel = new BoarEnnemy();
+                    ennemyTile = new EnnemyTile(0, nCol, TileType.ENNEMY, ennemyModel, ennemyModel.ennemyPrefab);
+                    break;
+                }
+            case EnnemyType.SQUIRREL:
+                {
+                    ennemyModel = new SquirrelEnnemy();
                     ennemyTile = new EnnemyTile(0, nCol, TileType.ENNEMY, ennemyModel, ennemyModel.ennemyPrefab);
                     break;
                 }

@@ -15,6 +15,8 @@ public class TileContainer : MonoBehaviour
 
     public GameObject bearPrefab;
     public GameObject gnomePrefab;
+    public GameObject boarPrefab;
+    public GameObject squirrelPrefab;
 
     public GameObject bearTrapPrefab;
     public GameObject netTrapPrefab;
@@ -53,6 +55,20 @@ public class TileContainer : MonoBehaviour
                 case EnnemyType.GNOME:
                     {
                         GameObject ennemyGO = Instantiate(gnomePrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = ennemy.Hp.ToString();
+                        break;
+                    }
+                case EnnemyType.BOAR:
+                    {
+                        GameObject ennemyGO = Instantiate(boarPrefab, transform);
+                        ennemyGO.transform.localPosition = Vector3.zero;
+                        ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = ennemy.Hp.ToString();
+                        break;
+                    }
+                case EnnemyType.SQUIRREL:
+                    {
+                        GameObject ennemyGO = Instantiate(squirrelPrefab, transform);
                         ennemyGO.transform.localPosition = Vector3.zero;
                         ennemyGO.GetComponentInChildren<TextMeshProUGUI>().text = ennemy.Hp.ToString();
                         break;

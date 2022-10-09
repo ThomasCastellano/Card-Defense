@@ -22,9 +22,11 @@ public class Ennemy
     public Ennemy(int iHP, float iSpeed, int iMovement, EnnemyType iType)
     {
         Hp = iHP;
-        Speed = iSpeed;
         Movement = iMovement;
         ennemyType = iType;
+
+        // La vitesse change selon la difficulté jusqu'à une limite de x4
+        Speed = iSpeed * GameManager.instance.difficultyMultiplier;
     }
 
     // ----------------------------------------------

@@ -60,7 +60,7 @@
     <Compile Include="Assets\Scripts\Logic\Cards\NetTrap.cs" />
     <Compile Include="Assets\Scripts\Visu\PlayerHand.cs" />
     <Compile Include="Assets\Scripts\Logic\Cards\WeaponModel.cs" />
-    <Compile Include="Assets\Scripts\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\StateMachineGame.cs" />
     <Compile Include="Assets\Scripts\Visu\DragDrop.cs" />
     <Compile Include="Assets\Scripts\Visu\PlayGrid.cs" />
     <Compile Include="Assets\Paul\Script\ObjectCard.cs" />
@@ -105,6 +105,10 @@
     <Compile Include="Assets\Paul\Script\Monster.cs" />
     <Compile Include="Assets\Scripts\Logic\ItemTile.cs" />
     <Compile Include="Assets\Scripts\Logic\Cards\BearTrap.cs" />
+    <Compile Include="Assets\Valentin\StateManchineMenu\StateMachineMenu\Options.cs" />
+    <Compile Include="Assets\Valentin\StateManchineMenu\StateMachineMenu\StateMachineMenu.cs" />
+    <Compile Include="Assets\Scripts\Logic\Ennemies\BoarEnnemy.cs" />
+    <Compile Include="Assets\Scripts\Logic\Ennemies\SquirrelEnnemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

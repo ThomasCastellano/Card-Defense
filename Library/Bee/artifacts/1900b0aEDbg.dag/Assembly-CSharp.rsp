@@ -374,8 +374,10 @@
 "Assets/Scripts/Logic/Cards/TrapModel.cs"
 "Assets/Scripts/Logic/Cards/WeaponModel.cs"
 "Assets/Scripts/Logic/Ennemies/BearEnnemy.cs"
+"Assets/Scripts/Logic/Ennemies/BoarEnnemy.cs"
 "Assets/Scripts/Logic/Ennemies/Ennemy.cs"
 "Assets/Scripts/Logic/Ennemies/GnomeEnnemy.cs"
+"Assets/Scripts/Logic/Ennemies/SquirrelEnnemy.cs"
 "Assets/Scripts/Logic/EnnemyTile.cs"
 "Assets/Scripts/Logic/Enums.cs"
 "Assets/Scripts/Logic/ItemTile.cs"
@@ -383,7 +385,7 @@
 "Assets/Scripts/Logic/PlayerHandModel.cs"
 "Assets/Scripts/Logic/Tile.cs"
 "Assets/Scripts/Logic/TrapTile.cs"
-"Assets/Scripts/StateMachine.cs"
+"Assets/Scripts/StateMachineGame.cs"
 "Assets/Scripts/Visu/CardBehaviour.cs"
 "Assets/Scripts/Visu/Cards Behaviour/BeartrapBehaviour.cs"
 "Assets/Scripts/Visu/Cards Behaviour/MercenaryBehaviour.cs"
@@ -401,6 +403,8 @@
 "Assets/Scripts/Visu/PlayGrid.cs"
 "Assets/Scripts/Visu/TileContainer.cs"
 "Assets/Scripts/Visu/TMPHp.cs"
+"Assets/Valentin/StateManchineMenu/StateMachineMenu/Options.cs"
+"Assets/Valentin/StateManchineMenu/StateMachineMenu/StateMachineMenu.cs"
 -langversion:9.0
 
 /deterministic

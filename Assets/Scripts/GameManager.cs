@@ -8,21 +8,23 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static float _SpawnDelay = 5.0f;      // Temps entre l'ajout de deux ennemis
     public const int MAX_NUMBER_OF_ENNEMIES = 12;
+    public const float MAX_DIFFICULTY_MULTIPLIER = 4.0f;
 
     [SerializeField] private TextMeshProUGUI gameTimerGUI;
-    private float _gameTimer = 0f;
 
-    public StateMachine State;
+    public StateMachineGame StateMachine;
     public GameObject playGrid;
     public PlayerHand playerHand;
+    public float difficultyMultiplier = 1.0f;
 
     public TileContainer tileContainerPrefab;
     public List<TileContainer> tileContainers = new List<TileContainer>();
 
     private BoardModel _boardModel;
-    //private PlayerHandModel _playerHandModel;
 
+    private float _gameTimer = 0f;
     private float _SpawnTimer = 0f;
+    private float _DifficultyTimer = 0f;
     private int _NbBlockedCards = 0;
 
     // ----------------------------------------------
@@ -38,10 +40,10 @@ public class GameManager : MonoBehaviour
     // ----------------------------------------------
     void Start()
     {
+        StateMachine = StateMachineGame.instance;
         _boardModel = new BoardModel();
         playerHand = PlayerHand.instance;
         _gameTimer = 0f;
-
     }
 
     // ----------------------------------------------
@@ -49,9 +51,30 @@ public class GameManager : MonoBehaviour
     // ----------------------------------------------
     void Update()
     {
-        // Update game timer
-        _gameTimer += Time.deltaTime;
-        gameTimerGUI.text = _gameTimer.ToString("0.00") + " s";
+        // Update game timers
+        if (_gameTimer < 9999f)
+        {
+            _gameTimer += Time.deltaTime;
+            gameTimerGUI.text = _gameTimer.ToString("0.00") + " s";
+        }
+
+        // Increase difficulty every minute
+        // 10 % increase every minute
+        if (difficultyMultiplier < MAX_DIFFICULTY_MULTIPLIER && _DifficultyTimer > 60.0f)
+        {
+            _DifficultyTimer = 0f;
+            difficultyMultiplier *= 1.1f;
+            if (difficultyMultiplier > MAX_DIFFICULTY_MULTIPLIER)
+            {
+                difficultyMultiplier = MAX_DIFFICULTY_MULTIPLIER;
+            }
+            _SpawnDelay /= difficultyMultiplier;
+            Debug.Log(difficultyMultiplier.ToString());
+        }
+        else
+        {
+            _DifficultyTimer += Time.deltaTime;
+        }
 
         // Move ennemies
         _boardModel.MoveEnnemies();
@@ -92,7 +115,9 @@ public class GameManager : MonoBehaviour
         if (_NbBlockedCards == playerHand.lIsCardPlayable.Count)
         {
             // GAME OVER YEAAAAH
-            Debug.Log("GAME OVER YEAAAAH");
+            //Debug.Log("GAME OVER YEAAAAH");
+            StateMachine.SetState(State.FIN);
+            StateMachine.LoadScene("MainMenu");
         }
     }
 

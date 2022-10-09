@@ -58,4 +58,6 @@ public enum EnnemyType
 {
     BEAR,
     GNOME,
+    BOAR,
+    SQUIRREL
 }
